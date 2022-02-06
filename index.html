@@ -46,18 +46,29 @@
   </head>
   <body>
     <main>
-      <img
-        class="jochenbernard"
-        alt="Jochen Bernard"
-        src="img/jochenbernard/jochenbernard_160x160.png"
-        srcset="
-          img/jochenbernard/jochenbernard_160x160.png    1x,
-          img/jochenbernard/jochenbernard_160x160@2x.png 2x,
-          img/jochenbernard/jochenbernard_160x160@3x.png 3x
-        "
-        width="160"
-        height="160"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          src="img/jochenbernard/jochenbernard_160x160.webp"
+          srcset="
+            img/jochenbernard/jochenbernard_160x160.webp    1x,
+            img/jochenbernard/jochenbernard_160x160@2x.webp 2x,
+            img/jochenbernard/jochenbernard_160x160@3x.webp 3x
+          "
+        />
+        <img
+          class="jochenbernard"
+          alt="Jochen Bernard"
+          src="img/jochenbernard/jochenbernard_160x160.png"
+          srcset="
+            img/jochenbernard/jochenbernard_160x160.png    1x,
+            img/jochenbernard/jochenbernard_160x160@2x.png 2x,
+            img/jochenbernard/jochenbernard_160x160@3x.png 3x
+          "
+          width="160"
+          height="160"
+        />
+      </picture>
       <h1>Jochen Bernard</h1>
       <address>
         <a
