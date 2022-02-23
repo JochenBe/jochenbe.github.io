@@ -198,12 +198,62 @@ a.button:active {
 }
 
 a.button:focus::after {
-  border-radius: 8.0625px;
+  border-radius: calc(0.25em + 4px);
 }
 
 a.button > img {
   margin-left: -0.125em;
   margin-right: 0.25em;
+}
+
+.skills {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  margin-top: 1em;
+}
+
+.skills > li > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 0 1em;
+}
+
+.skills li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dot {
+  display: inline-block;
+
+  margin-right: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+
+  color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.dot.full {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.dot.half {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85) 50%,
+    rgba(0, 0, 0, 0.125) 50%
+  );
+}
+
+.dot.empty {
+  background-color: rgba(0, 0, 0, 0.125);
 }
 
 footer {
