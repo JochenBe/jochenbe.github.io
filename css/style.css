@@ -184,9 +184,13 @@ a.button > img {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  column-gap: 2em;
 
+  margin: 0 auto;
   margin-top: 1em;
+  max-width: max-content;
 }
 
 .skills > li > ul {
@@ -201,6 +205,8 @@ a.button > img {
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  white-space: nowrap;
 }
 
 .dot {
@@ -241,19 +247,19 @@ footer {
 }
 
 @media only screen and (max-width: 640px) {
-  body {
+  body.zoomable {
     zoom: 0.875;
   }
 }
 
 @media only screen and (max-width: 512px) {
-  body {
+  body.zoomable {
     zoom: 0.75;
   }
 }
 
 @media print {
-  body {
+  body.zoomable {
     zoom: 0.75;
   }
 }
