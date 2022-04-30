@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,osx,git,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,osx,git,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/macos,osx,git,visualstudiocode,sass
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,osx,git,visualstudiocode,sass
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -46,6 +46,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
 ### OSX ###
 # General
 
@@ -56,6 +60,12 @@ Temporary Items
 # Files that might appear in the root of a volume
 
 # Directories potentially created on remote AFP share
+
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
 
 ### VisualStudioCode ###
 .vscode/*
@@ -77,5 +87,9 @@ Temporary Items
 .ionide
 
 # Support for Project snippet scope
+.vscode/*.code-snippets
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,osx,git,visualstudiocode
+# Ignore code-workspaces
+*.code-workspace
+
+# End of https://www.toptal.com/developers/gitignore/api/macos,osx,git,visualstudiocode,sass
