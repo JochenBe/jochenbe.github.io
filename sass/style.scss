@@ -35,6 +35,10 @@ $breakpoint-large: 1216px;
     inset $offset 0 - $offset $blur rgba(black, weight(5));
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: $background-color;
 
@@ -52,6 +56,27 @@ header,
 main > section {
   margin: 0 auto;
   max-width: 1536px;
+}
+
+header {
+  position: relative;
+
+  nav {
+    position: absolute;
+    left: 50%;
+    bottom: 2em;
+    transform: translateX(-50%);
+
+    a {
+      opacity: 0.5;
+
+      transition: opacity 0.125s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 @mixin heading-color($color) {

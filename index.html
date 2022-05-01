@@ -44,7 +44,7 @@
     </script>
   </head>
   <body>
-    <header>
+    <header id="header">
       <section>
         <div>
           <h1>Jochen<br />Bernard</h1>
@@ -128,9 +128,23 @@
           </ul>
         </div>
       </section>
+      <nav id="nav">
+        <a href="#experience">
+          <img
+            width="48"
+            height="28"
+            src="img/down/down-64w.png"
+            srcset="
+              img/down/down-48w.png   48w,
+              img/down/down-96w.png   96w,
+              img/down/down-144w.png 144w
+            "
+            alt="Down"
+        /></a>
+      </nav>
     </header>
     <main>
-      <section>
+      <section id="experience">
         <h2>Experience</h2>
         <ul class="icon-list icon-list-content icon-list-white">
           <li>
@@ -220,5 +234,6 @@
     <footer>
       <p>Copyright &copy; 2020 Jochen Bernard.<br />All rights reserved.</p>
     </footer>
+    <script src="js/index.js"></script>
   </body>
 </html>
