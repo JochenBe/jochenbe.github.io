@@ -7,10 +7,10 @@ body {
 
 h1,
 h2 {
-  text-align: center;
-  line-height: 0.875;
   color: #020307;
   text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+  text-align: center;
+  line-height: 0.875;
 }
 
 h1 {
@@ -19,16 +19,30 @@ h1 {
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 700;
 }
 
-header > section {
+p {
+  max-width: 48ch;
+  line-height: 1.5;
+  text-align: justify;
+  color: #7e7f83;
+}
+* + p {
+  margin-top: 4em;
+}
+
+header > section,
+main > section {
   display: flex;
-  flex-direction: row;
-  padding: 8em;
   min-height: 100vh;
   box-sizing: border-box;
+}
+
+header > section {
+  flex-direction: row;
+  padding: 8em;
 }
 header > section > div {
   display: flex;
@@ -38,6 +52,7 @@ header > section > div {
 }
 header > section > div:first-child {
   flex: 3;
+  margin-right: 8em;
 }
 header > section > div:last-child {
   flex: 2;
@@ -53,13 +68,13 @@ header > section > div:last-child {
 .icon-list li:nth-child(odd) {
   flex-direction: row;
 }
-.icon-list li:nth-child(odd) h2 {
+.icon-list li:nth-child(odd) p {
   margin-left: 1em;
 }
 .icon-list li:nth-child(even) {
   flex-direction: row-reverse;
 }
-.icon-list li:nth-child(even) h2 {
+.icon-list li:nth-child(even) p {
   margin-right: 1em;
 }
 .icon-list li:not(:first-child) {
@@ -73,11 +88,16 @@ header > section > div:last-child {
   height: 96px;
   border-radius: 50%;
 }
-.icon-list h2 {
+.icon-list p {
   position: relative;
   transform-style: preserve-3d;
+  margin: 0;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 0.875;
+  color: #020307;
 }
-.icon-list h2::after {
+.icon-list p::after {
   content: "";
   position: absolute;
   left: -0.25em;
@@ -90,41 +110,60 @@ header > section > div:last-child {
   background-color: #f05137;
   box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.swift h2 {
+.icon-list li.swift p {
   text-shadow: 0 0.25em 1em rgba(240, 81, 55, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.swift h2::after {
+.icon-list li.swift p::after {
   background-color: rgba(240, 81, 55, 0.25);
 }
 .icon-list li.swiftui div {
   background-color: #486cdf;
   box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.swiftui h2 {
+.icon-list li.swiftui p {
   text-shadow: 0 0.25em 1em rgba(72, 108, 223, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.swiftui h2::after {
+.icon-list li.swiftui p::after {
   background-color: rgba(72, 108, 223, 0.25);
 }
 .icon-list li.react div {
   background-color: #007ad6;
   box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.react h2 {
+.icon-list li.react p {
   text-shadow: 0 0.25em 1em rgba(0, 122, 214, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.react h2::after {
+.icon-list li.react p::after {
   background-color: rgba(0, 122, 214, 0.25);
 }
 .icon-list li.typescript div {
   background-color: #027ba7;
   box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.typescript h2 {
+.icon-list li.typescript p {
   text-shadow: 0 0.25em 1em rgba(2, 123, 167, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.typescript h2::after {
+.icon-list li.typescript p::after {
   background-color: rgba(2, 123, 167, 0.25);
+}
+
+main > section {
+  padding: 4em;
+  background-color: #486cdf;
+  box-shadow: inset 0 0 8em rgba(0, 0, 0, 0.0625), 0 0 4em rgba(72, 108, 223, 0.25);
+}
+main > section h2 {
+  color: #f9fafe;
+  text-shadow: 0 0.25em 1em rgba(249, 250, 254, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+}
+
+footer {
+  padding: 2em;
+}
+footer p {
+  margin: 0 auto;
+  text-align: center;
+  color: #bbbcc0;
 }
 
 /*# sourceMappingURL=style.css.map */

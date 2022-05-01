@@ -11,15 +11,23 @@ $color-weight: math.div(100%, 32);
 $background-color: mix($primary-color, white, $color-weight);
 $foreground-color: mix($primary-color, black, $color-weight);
 
+@function weight($amount) {
+  @return math.pow(0.5, $amount);
+}
+
+@function lighten($color, $amount) {
+  @return mix($color, $background-color, 100% * weight($amount));
+}
+
 @function shadow($blur, $color) {
   @return 0 math.div($blur, 4) $blur $color,
-    0 math.div($blur, 4) $blur rgba(black, 1/16);
+    0 math.div($blur, 4) $blur rgba(black, weight(4));
 }
 
 @function inset-shadow($blur) {
   $offset: math.div($blur, 2);
-  @return inset 0 - $offset $offset $blur rgba(white, 1/8),
-    inset $offset 0 - $offset $blur rgba(black, 1/32);
+  @return inset 0 - $offset $offset $blur rgba(white, weight(3)),
+    inset $offset 0 - $offset $blur rgba(black, weight(5));
 }
 
 body {
@@ -31,12 +39,17 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+@mixin heading-color($color) {
+  color: $color;
+  text-shadow: shadow(1em, rgba($color, weight(3)));
+}
+
 h1,
 h2 {
+  @include heading-color($foreground-color);
+
   text-align: center;
   line-height: 0.875;
-  color: $foreground-color;
-  text-shadow: shadow(1em, rgba($foreground-color, 1/8));
 }
 
 h1 {
@@ -45,17 +58,34 @@ h1 {
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 700;
 }
 
-header > section {
+p {
+  max-width: 48ch;
+
+  line-height: 1.5;
+  text-align: justify;
+  color: lighten($foreground-color, 1);
+
+  * + & {
+    margin-top: 4em;
+  }
+}
+
+header > section,
+main > section {
   display: flex;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+header > section {
   flex-direction: row;
 
   padding: 8em;
-  min-height: 100vh;
-  box-sizing: border-box;
 
   & > div {
     display: flex;
@@ -65,6 +95,8 @@ header > section {
 
     &:first-child {
       flex: 3;
+
+      margin-right: 8em;
     }
 
     &:last-child {
@@ -85,7 +117,7 @@ header > section {
     &:nth-child(odd) {
       flex-direction: row;
 
-      h2 {
+      p {
         margin-left: $heading-margin;
       }
     }
@@ -93,7 +125,7 @@ header > section {
     &:nth-child(even) {
       flex-direction: row-reverse;
 
-      h2 {
+      p {
         margin-right: $heading-margin;
       }
     }
@@ -115,9 +147,16 @@ header > section {
     border-radius: 50%;
   }
 
-  h2 {
+  p {
     position: relative;
     transform-style: preserve-3d;
+
+    margin: 0;
+
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 0.875;
+    color: $foreground-color;
 
     &::after {
       content: "";
@@ -137,11 +176,11 @@ header > section {
   @mixin icon-color($color) {
     div {
       background-color: $color;
-      box-shadow: inset-shadow($icon-size / 6),
-        shadow($icon-size / 2, rgba($color, 0.25));
+      box-shadow: inset-shadow(math.div($icon-size, 6)),
+        shadow(math.div($icon-size, 2), rgba($color, 0.25));
     }
 
-    h2 {
+    p {
       text-shadow: shadow(1em, rgba($color, 0.25));
 
       &::after {
@@ -164,5 +203,27 @@ header > section {
 
   li.typescript {
     @include icon-color($teal-color);
+  }
+}
+
+main > section {
+  padding: 4em;
+  background-color: $primary-color;
+  box-shadow: inset 0 0 8em rgba(black, weight(4)),
+    0 0 4em rgba($primary-color, 0.25);
+
+  h2 {
+    @include heading-color($background-color);
+  }
+}
+
+footer {
+  padding: 2em;
+
+  p {
+    margin: 0 auto;
+
+    text-align: center;
+    color: lighten($foreground-color, 2);
   }
 }
