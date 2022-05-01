@@ -1,8 +1,13 @@
 body {
   background-color: #f9fafe;
-  font-size: 20px;
+  font-size: 16px;
   color: #020307;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 20px;
+  }
 }
 
 h1,
@@ -41,8 +46,8 @@ main > section {
 }
 
 header > section {
-  flex-direction: row;
-  padding: 8em;
+  flex-direction: column;
+  padding: 3em;
 }
 header > section > div {
   display: flex;
@@ -51,11 +56,41 @@ header > section > div {
   align-items: center;
 }
 header > section > div:first-child {
-  flex: 3;
-  margin-right: 8em;
+  margin-bottom: 3em;
 }
-header > section > div:last-child {
-  flex: 2;
+@media screen and (min-width: 512px) {
+  header > section {
+    padding: 6em;
+  }
+  header > section > div:first-child {
+    margin-bottom: 6em;
+  }
+}
+@media screen and (min-width: 768px) {
+  header > section {
+    padding: 8em;
+  }
+  header > section > div:first-child {
+    margin-bottom: 8em;
+  }
+}
+@media screen and (min-width: 1216px) {
+  header > section {
+    flex-direction: row;
+    padding: 4em;
+  }
+  header > section > div:first-child {
+    flex: 1;
+  }
+  header > section > div:last-child {
+    flex: 1;
+    min-width: 448px;
+    max-width: 640px;
+  }
+  header > section > div:first-child {
+    margin-bottom: 0;
+    margin-right: 4em;
+  }
 }
 
 .icon-list {
@@ -84,8 +119,6 @@ header > section > div:last-child {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 96px;
-  height: 96px;
   border-radius: 50%;
 }
 .icon-list p {
@@ -106,9 +139,26 @@ header > section > div:last-child {
   height: 0.25em;
   transform: translateZ(-1px);
 }
+.icon-list div {
+  width: 80px;
+  height: 80px;
+}
+.icon-list div img {
+  width: 56px;
+  height: 56px;
+}
+@media screen and (min-width: 768px) {
+  .icon-list div {
+    width: 96px;
+    height: 96px;
+  }
+  .icon-list div img {
+    width: 64px;
+    height: 64px;
+  }
+}
 .icon-list li.swift div {
   background-color: #f05137;
-  box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
 .icon-list li.swift p {
   text-shadow: 0 0.25em 1em rgba(240, 81, 55, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
@@ -116,9 +166,16 @@ header > section > div:last-child {
 .icon-list li.swift p::after {
   background-color: rgba(240, 81, 55, 0.25);
 }
+.icon-list li.swift div {
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(240, 81, 55, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+}
+@media screen and (min-width: 768px) {
+  .icon-list li.swift div {
+    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+  }
+}
 .icon-list li.swiftui div {
   background-color: #486cdf;
-  box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
 .icon-list li.swiftui p {
   text-shadow: 0 0.25em 1em rgba(72, 108, 223, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
@@ -126,9 +183,16 @@ header > section > div:last-child {
 .icon-list li.swiftui p::after {
   background-color: rgba(72, 108, 223, 0.25);
 }
+.icon-list li.swiftui div {
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(72, 108, 223, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+}
+@media screen and (min-width: 768px) {
+  .icon-list li.swiftui div {
+    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+  }
+}
 .icon-list li.react div {
   background-color: #007ad6;
-  box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
 .icon-list li.react p {
   text-shadow: 0 0.25em 1em rgba(0, 122, 214, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
@@ -136,15 +200,30 @@ header > section > div:last-child {
 .icon-list li.react p::after {
   background-color: rgba(0, 122, 214, 0.25);
 }
+.icon-list li.react div {
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(0, 122, 214, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+}
+@media screen and (min-width: 768px) {
+  .icon-list li.react div {
+    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+  }
+}
 .icon-list li.typescript div {
   background-color: #027ba7;
-  box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
 }
 .icon-list li.typescript p {
   text-shadow: 0 0.25em 1em rgba(2, 123, 167, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
 .icon-list li.typescript p::after {
   background-color: rgba(2, 123, 167, 0.25);
+}
+.icon-list li.typescript div {
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(2, 123, 167, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+}
+@media screen and (min-width: 768px) {
+  .icon-list li.typescript div {
+    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+  }
 }
 
 main > section {

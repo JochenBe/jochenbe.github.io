@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:list";
 
 $orange-color: #f05137;
 $indigo-color: #486cdf;
@@ -10,6 +11,10 @@ $primary-color: $indigo-color;
 $color-weight: math.div(100%, 32);
 $background-color: mix($primary-color, white, $color-weight);
 $foreground-color: mix($primary-color, black, $color-weight);
+
+$breakpoint-small: 512px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1216px;
 
 @function weight($amount) {
   @return math.pow(0.5, $amount);
@@ -33,10 +38,14 @@ $foreground-color: mix($primary-color, black, $color-weight);
 body {
   background-color: $background-color;
 
-  font-size: 20px;
+  font-size: 16px;
   color: $foreground-color;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  @media screen and (min-width: $breakpoint-medium) {
+    font-size: 20px;
+  }
 }
 
 @mixin heading-color($color) {
@@ -83,9 +92,10 @@ main > section {
 }
 
 header > section {
-  flex-direction: row;
+  flex-direction: column;
 
-  padding: 8em;
+  $padding: 3em;
+  padding: $padding;
 
   & > div {
     display: flex;
@@ -94,13 +104,50 @@ header > section {
     align-items: center;
 
     &:first-child {
-      flex: 3;
-
-      margin-right: 8em;
+      margin-bottom: $padding;
     }
+  }
 
-    &:last-child {
-      flex: 2;
+  @media screen and (min-width: $breakpoint-small) {
+    $padding: 6em;
+    padding: $padding;
+
+    & > div:first-child {
+      margin-bottom: $padding;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-medium) {
+    $padding: 8em;
+    padding: $padding;
+
+    & > div:first-child {
+      margin-bottom: $padding;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-large) {
+    flex-direction: row;
+
+    $padding: 4em;
+    padding: $padding;
+
+    & > div {
+      &:first-child {
+        flex: 1;
+      }
+
+      &:last-child {
+        flex: 1;
+
+        min-width: 448px;
+        max-width: 640px;
+      }
+
+      &:first-child {
+        margin-bottom: 0;
+        margin-right: $padding;
+      }
     }
   }
 }
@@ -135,15 +182,11 @@ header > section {
     }
   }
 
-  $icon-size: 96px;
-
   div {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: $icon-size;
-    height: $icon-size;
     border-radius: 50%;
   }
 
@@ -173,11 +216,32 @@ header > section {
     }
   }
 
+  $icon-size-small: (80px, 56px);
+  $icon-size-large: (96px, 64px);
+
+  @mixin icon-size($icon-size) {
+    div {
+      $size: nth($icon-size, 1);
+      width: $size;
+      height: $size;
+
+      img {
+        $size: nth($icon-size, 2);
+        width: $size;
+        height: $size;
+      }
+    }
+  }
+
+  @include icon-size($icon-size-small);
+
+  @media screen and (min-width: $breakpoint-medium) {
+    @include icon-size($icon-size-large);
+  }
+
   @mixin icon-color($color) {
     div {
       background-color: $color;
-      box-shadow: inset-shadow(math.div($icon-size, 6)),
-        shadow(math.div($icon-size, 2), rgba($color, 0.25));
     }
 
     p {
@@ -189,20 +253,36 @@ header > section {
     }
   }
 
+  @mixin icon-shadow($color, $icon-size) {
+    div {
+      box-shadow: inset-shadow(math.div($icon-size, 6)),
+        shadow(math.div($icon-size, 2), rgba($color, 0.25));
+    }
+  }
+
+  @mixin icon($color) {
+    @include icon-color($color);
+    @include icon-shadow($color, nth($icon-size-small, 1));
+
+    @media screen and (min-width: $breakpoint-medium) {
+      @include icon-shadow($color, nth($icon-size-large, 1));
+    }
+  }
+
   li.swift {
-    @include icon-color($orange-color);
+    @include icon($orange-color);
   }
 
   li.swiftui {
-    @include icon-color($indigo-color);
+    @include icon($indigo-color);
   }
 
   li.react {
-    @include icon-color($blue-color);
+    @include icon($blue-color);
   }
 
   li.typescript {
-    @include icon-color($teal-color);
+    @include icon($teal-color);
   }
 }
 
