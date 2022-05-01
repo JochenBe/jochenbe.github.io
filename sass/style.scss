@@ -1,11 +1,168 @@
-$color-weight: 100% / 64;
-$background-color: mix(black, white, $color-weight);
-$foreground-color: mix(white, black, $color-weight);
+@use "sass:math";
+
+$orange-color: #f05137;
+$indigo-color: #486cdf;
+$blue-color: #007ad6;
+$teal-color: #027ba7;
+
+$primary-color: $indigo-color;
+
+$color-weight: math.div(100%, 32);
+$background-color: mix($primary-color, white, $color-weight);
+$foreground-color: mix($primary-color, black, $color-weight);
+
+@function shadow($blur, $color) {
+  @return 0 math.div($blur, 4) $blur $color,
+    0 math.div($blur, 4) $blur rgba(black, 1/16);
+}
+
+@function inset-shadow($blur) {
+  $offset: math.div($blur, 2);
+  @return inset 0 - $offset $offset $blur rgba(white, 1/8),
+    inset $offset 0 - $offset $blur rgba(black, 1/32);
+}
 
 body {
   background-color: $background-color;
 
+  font-size: 20px;
   color: $foreground-color;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2 {
+  text-align: center;
+  line-height: 0.875;
+  color: $foreground-color;
+  text-shadow: shadow(1em, rgba($foreground-color, 1/8));
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+header > section {
+  display: flex;
+  flex-direction: row;
+
+  padding: 8em;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:first-child {
+      flex: 3;
+    }
+
+    &:last-child {
+      flex: 2;
+    }
+  }
+}
+
+.icon-list {
+  width: 100%;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    $heading-margin: 1em;
+
+    &:nth-child(odd) {
+      flex-direction: row;
+
+      h2 {
+        margin-left: $heading-margin;
+      }
+    }
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+
+      h2 {
+        margin-right: $heading-margin;
+      }
+    }
+
+    &:not(:first-child) {
+      margin-top: 2em;
+    }
+  }
+
+  $icon-size: 96px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $icon-size;
+    height: $icon-size;
+    border-radius: 50%;
+  }
+
+  h2 {
+    position: relative;
+    transform-style: preserve-3d;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+
+      $width: 0.25em;
+      left: -$width;
+      right: -$width;
+      bottom: 0;
+      height: $width;
+
+      transform: translateZ(-1px);
+    }
+  }
+
+  @mixin icon-color($color) {
+    div {
+      background-color: $color;
+      box-shadow: inset-shadow($icon-size / 6),
+        shadow($icon-size / 2, rgba($color, 0.25));
+    }
+
+    h2 {
+      text-shadow: shadow(1em, rgba($color, 0.25));
+
+      &::after {
+        background-color: rgba($color, 0.25);
+      }
+    }
+  }
+
+  li.swift {
+    @include icon-color($orange-color);
+  }
+
+  li.swiftui {
+    @include icon-color($indigo-color);
+  }
+
+  li.react {
+    @include icon-color($blue-color);
+  }
+
+  li.typescript {
+    @include icon-color($teal-color);
+  }
 }
