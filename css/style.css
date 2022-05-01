@@ -4,28 +4,41 @@ body {
   color: #020307;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1216px) {
   body {
     font-size: 20px;
   }
 }
 
+header,
+main > section {
+  margin: 0 auto;
+  max-width: 1536px;
+}
+
 h1,
-h2 {
+h2,
+h3 {
   color: #020307;
   text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
-  text-align: center;
+  font-weight: 700;
   line-height: 0.875;
 }
 
 h1 {
+  margin-bottom: 1em;
   font-size: 4em;
   font-weight: 900;
+  text-align: center;
 }
 
 h2 {
+  margin-bottom: 1em;
   font-size: 3em;
-  font-weight: 700;
+}
+
+h3 {
+  font-size: 2em;
 }
 
 p {
@@ -34,19 +47,16 @@ p {
   text-align: justify;
   color: #7e7f83;
 }
-* + p {
-  margin-top: 4em;
-}
 
 header > section,
 main > section {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
 header > section {
-  flex-direction: column;
   padding: 3em;
 }
 header > section > div {
@@ -66,7 +76,7 @@ header > section > div:first-child {
     margin-bottom: 6em;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 640px) {
   header > section {
     padding: 8em;
   }
@@ -79,13 +89,8 @@ header > section > div:first-child {
     flex-direction: row;
     padding: 4em;
   }
-  header > section > div:first-child {
+  header > section > div {
     flex: 1;
-  }
-  header > section > div:last-child {
-    flex: 1;
-    min-width: 448px;
-    max-width: 640px;
   }
   header > section > div:first-child {
     margin-bottom: 0;
@@ -94,7 +99,20 @@ header > section > div:first-child {
 }
 
 .icon-list {
+  margin: 0 auto;
   width: 100%;
+}
+@media screen and (min-width: 640px) {
+  .icon-list {
+    min-width: 384px;
+    max-width: 512px;
+  }
+}
+@media screen and (min-width: 1216px) {
+  .icon-list {
+    min-width: 384px;
+    max-width: 640px;
+  }
 }
 .icon-list li {
   display: flex;
@@ -103,34 +121,49 @@ header > section > div:first-child {
 .icon-list li:nth-child(odd) {
   flex-direction: row;
 }
-.icon-list li:nth-child(odd) p {
-  margin-left: 1em;
+.icon-list li:nth-child(odd) .icon {
+  margin-right: 2em;
+}
+.icon-list li:nth-child(odd) .heading-wrapper {
+  align-items: flex-start;
 }
 .icon-list li:nth-child(even) {
   flex-direction: row-reverse;
 }
-.icon-list li:nth-child(even) p {
-  margin-right: 1em;
+.icon-list li:nth-child(even) .icon {
+  margin-left: 2em;
+}
+.icon-list li:nth-child(even) .heading-wrapper {
+  align-items: flex-end;
 }
 .icon-list li:not(:first-child) {
   margin-top: 2em;
 }
-.icon-list div {
+.icon-list .icon {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
 }
-.icon-list p {
+.icon-list .content {
+  display: flex;
+  flex-direction: column;
+}
+.icon-list .heading-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.icon-list .heading,
+.icon-list h3 {
   position: relative;
   transform-style: preserve-3d;
-  margin: 0;
   font-size: 2em;
   font-weight: 700;
   line-height: 0.875;
-  color: #020307;
 }
-.icon-list p::after {
+.icon-list .heading::after,
+.icon-list h3::after {
   content: "";
   position: absolute;
   left: -0.25em;
@@ -139,101 +172,146 @@ header > section > div:first-child {
   height: 0.25em;
   transform: translateZ(-1px);
 }
-.icon-list div {
+.icon-list .heading {
+  color: #020307;
+}
+.icon-list .icon {
   width: 80px;
   height: 80px;
 }
-.icon-list div img {
+.icon-list .icon img {
   width: 56px;
   height: 56px;
 }
-@media screen and (min-width: 768px) {
-  .icon-list div {
+.icon-list .heading-wrapper {
+  height: 80px;
+}
+@media screen and (min-width: 1216px) {
+  .icon-list .icon {
     width: 96px;
     height: 96px;
   }
-  .icon-list div img {
+  .icon-list .icon img {
     width: 64px;
     height: 64px;
   }
+  .icon-list .heading-wrapper {
+    height: 96px;
+  }
 }
-.icon-list li.swift div {
+.icon-list li.swift .icon {
   background-color: #f05137;
 }
-.icon-list li.swift p {
+.icon-list li.swift .heading,
+.icon-list li.swift h3 {
   text-shadow: 0 0.25em 1em rgba(240, 81, 55, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.swift p::after {
+.icon-list li.swift .heading::after,
+.icon-list li.swift h3::after {
   background-color: rgba(240, 81, 55, 0.25);
 }
-.icon-list li.swift div {
+.icon-list li.swift .icon {
   box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(240, 81, 55, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
 }
-@media screen and (min-width: 768px) {
-  .icon-list li.swift div {
+@media screen and (min-width: 1216px) {
+  .icon-list li.swift .icon {
     box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
   }
 }
-.icon-list li.swiftui div {
+.icon-list li.swiftui .icon {
   background-color: #486cdf;
 }
-.icon-list li.swiftui p {
+.icon-list li.swiftui .heading,
+.icon-list li.swiftui h3 {
   text-shadow: 0 0.25em 1em rgba(72, 108, 223, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.swiftui p::after {
+.icon-list li.swiftui .heading::after,
+.icon-list li.swiftui h3::after {
   background-color: rgba(72, 108, 223, 0.25);
 }
-.icon-list li.swiftui div {
+.icon-list li.swiftui .icon {
   box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(72, 108, 223, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
 }
-@media screen and (min-width: 768px) {
-  .icon-list li.swiftui div {
+@media screen and (min-width: 1216px) {
+  .icon-list li.swiftui .icon {
     box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
   }
 }
-.icon-list li.react div {
+.icon-list li.react .icon {
   background-color: #007ad6;
 }
-.icon-list li.react p {
+.icon-list li.react .heading,
+.icon-list li.react h3 {
   text-shadow: 0 0.25em 1em rgba(0, 122, 214, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.react p::after {
+.icon-list li.react .heading::after,
+.icon-list li.react h3::after {
   background-color: rgba(0, 122, 214, 0.25);
 }
-.icon-list li.react div {
+.icon-list li.react .icon {
   box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(0, 122, 214, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
 }
-@media screen and (min-width: 768px) {
-  .icon-list li.react div {
+@media screen and (min-width: 1216px) {
+  .icon-list li.react .icon {
     box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
   }
 }
-.icon-list li.typescript div {
+.icon-list li.typescript .icon {
   background-color: #027ba7;
 }
-.icon-list li.typescript p {
+.icon-list li.typescript .heading,
+.icon-list li.typescript h3 {
   text-shadow: 0 0.25em 1em rgba(2, 123, 167, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
-.icon-list li.typescript p::after {
+.icon-list li.typescript .heading::after,
+.icon-list li.typescript h3::after {
   background-color: rgba(2, 123, 167, 0.25);
 }
-.icon-list li.typescript div {
+.icon-list li.typescript .icon {
   box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(2, 123, 167, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
 }
-@media screen and (min-width: 768px) {
-  .icon-list li.typescript div {
+@media screen and (min-width: 1216px) {
+  .icon-list li.typescript .icon {
     box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
   }
+}
+@media screen and (min-width: 640px) {
+  .icon-list.icon-list-content {
+    min-width: 384px;
+    max-width: 768px;
+  }
+}
+@media screen and (min-width: 1216px) {
+  .icon-list.icon-list-content {
+    min-width: 512px;
+    max-width: 1024px;
+  }
+}
+.icon-list.icon-list-content li {
+  align-items: flex-start;
+}
+.icon-list.icon-list-white .heading::after,
+.icon-list.icon-list-white h3::after {
+  background-color: rgba(249, 250, 254, 0.25);
+}
+
+main {
+  background-color: #486cdf;
+  box-shadow: inset 0 0 8em rgba(0, 0, 0, 0.0625), 0 0 4em rgba(72, 108, 223, 0.25);
+}
+main h2 {
+  color: #a1b3ef;
+  text-shadow: 0 0.25em 1em rgba(161, 179, 239, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+}
+main h3 {
+  color: #f9fafe;
+}
+main p {
+  color: #a1b3ef;
 }
 
 main > section {
   padding: 4em;
-  background-color: #486cdf;
-  box-shadow: inset 0 0 8em rgba(0, 0, 0, 0.0625), 0 0 4em rgba(72, 108, 223, 0.25);
-}
-main > section h2 {
-  color: #f9fafe;
-  text-shadow: 0 0.25em 1em rgba(249, 250, 254, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
 }
 
 footer {
