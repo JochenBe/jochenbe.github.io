@@ -2,6 +2,8 @@
 @use "sass:list";
 
 $orange-color: #f05137;
+$pink-color: #ee347f;
+$purple-color: #bc4dbc;
 $indigo-color: #486cdf;
 $blue-color: #007ad6;
 $teal-color: #027ba7;
@@ -68,7 +70,6 @@ h3 {
 
 h1 {
   margin-top: 0.5em;
-  margin-bottom: 1em;
 
   font-size: 4em;
   font-weight: 900;
@@ -109,7 +110,7 @@ main > section {
 header {
   position: relative;
 
-  nav {
+  #down {
     position: absolute;
     left: 50%;
     bottom: 2em;
@@ -194,6 +195,57 @@ header > section {
   }
 }
 
+.icon-navigation ul {
+  display: flex;
+  flex-direction: row;
+
+  margin: 2em 0;
+
+  $size: 40px;
+
+  li + li {
+    margin-left: math.div($size, 2);
+  }
+
+  img {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+  }
+
+  @mixin icon-color($color) {
+    img {
+      background-color: $color;
+      box-shadow: inset-shadow(math.div($size, 6)),
+        shadow(math.div($size, 2), rgba($color, weight(2)));
+    }
+  }
+
+  .github {
+    @include icon-color($blue-color);
+  }
+
+  .linkedin {
+    @include icon-color($indigo-color);
+  }
+
+  .mail {
+    @include icon-color($pink-color);
+  }
+
+  a {
+    transition: opacity 0.125s ease;
+
+    &:hover {
+      opacity: 0.875;
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+}
+
 .icon-list {
   margin: 0 auto;
   width: 100%;
@@ -208,11 +260,11 @@ header > section {
     max-width: 640px;
   }
 
+  $margin: 2em;
+
   li {
     display: flex;
     align-items: center;
-
-    $margin: 2em;
 
     &:nth-child(odd) {
       flex-direction: row;
@@ -237,10 +289,10 @@ header > section {
         align-items: flex-end;
       }
     }
+  }
 
-    &:not(:first-child) {
-      margin-top: $margin;
-    }
+  li + li {
+    margin-top: $margin;
   }
 
   .icon {
