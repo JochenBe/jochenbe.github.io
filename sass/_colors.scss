@@ -1,0 +1,23 @@
+@use "sass:math";
+
+$orange-color: #f05137;
+$pink-color: #ee347f;
+$purple-color: #bc4dbc;
+$indigo-color: #486cdf;
+$blue-color: #007ad6;
+$teal-color: #027ba7;
+
+$primary-color: $indigo-color;
+
+$color-weight: math.div(100%, 32);
+$background-color: mix($primary-color, white, $color-weight);
+$foreground-color: mix($primary-color, black, $color-weight);
+
+$github-color: $blue-color;
+$linkedin-color: $indigo-color;
+$mail-color: $pink-color;
+
+$swift-color: $orange-color;
+$swiftui-color: $indigo-color;
+$react-color: $blue-color;
+$typescript-color: $teal-color;

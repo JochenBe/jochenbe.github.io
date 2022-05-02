@@ -18,29 +18,23 @@ h1,
 h2,
 h3 {
   color: #020307;
-  text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+  text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
   font-weight: 700;
   line-height: 0.875;
+  margin-bottom: 1em;
 }
 
 h1 {
-  margin-top: 0.5em;
+  text-align: center;
   font-size: 4em;
   font-weight: 900;
-  text-align: center;
 }
 
 h2 {
   color: #cdd7f6;
-  text-shadow: 0 0.25em 1em rgba(205, 215, 246, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
-  margin-bottom: 0.5em;
+  text-shadow: 0 0.25em 1em rgba(205, 215, 246, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
   width: 100%;
   font-size: 3em;
-}
-@media screen and (min-width: 640px) {
-  h2 {
-    margin-bottom: 1em;
-  }
 }
 
 h3 {
@@ -49,9 +43,9 @@ h3 {
 
 p {
   max-width: 48ch;
+  color: #7e7f83;
   line-height: 1.5;
   text-align: justify;
-  color: #7e7f83;
 }
 
 header,
@@ -63,17 +57,17 @@ main > section {
 header {
   position: relative;
 }
-header #down {
+header #down-navigation {
   position: absolute;
   left: 50%;
   bottom: 2em;
   transform: translateX(-50%);
 }
-header #down a {
+header #down-navigation a {
   opacity: 0.5;
   transition: opacity 0.125s ease;
 }
-header #down a:hover {
+header #down-navigation a:hover {
   opacity: 1;
 }
 
@@ -96,23 +90,14 @@ header > section > div {
 header > section > div:first-child {
   min-height: 100vh;
 }
-header > section h2 {
-  margin-bottom: 1em;
-}
 @media screen and (min-width: 512px) {
   header > section > div {
     padding: 6em;
-  }
-  header > section h2 {
-    margin-bottom: 1.5em;
   }
 }
 @media screen and (min-width: 640px) {
   header > section > div {
     padding: 8em;
-  }
-  header > section h2 {
-    margin-bottom: 2.5em;
   }
 }
 @media screen and (min-width: 1216px) {
@@ -138,7 +123,6 @@ header > section h2 {
 .icon-navigation ul {
   display: flex;
   flex-direction: row;
-  margin: 2em 0;
 }
 .icon-navigation ul li + li {
   margin-left: 20px;
@@ -150,15 +134,15 @@ header > section h2 {
 }
 .icon-navigation ul .github img {
   background-color: #007ad6;
-  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(255, 255, 255, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(0, 0, 0, 0.03125), 0 5px 20px rgba(0, 122, 214, 0.25), 0 5px 20px rgba(0, 0, 0, 0.0625);
+  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(249, 250, 254, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(2, 3, 7, 0.03125), 0 5px 20px rgba(0, 122, 214, 0.25), 0 5px 20px rgba(2, 3, 7, 0.0625);
 }
 .icon-navigation ul .linkedin img {
   background-color: #486cdf;
-  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(255, 255, 255, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(0, 0, 0, 0.03125), 0 5px 20px rgba(72, 108, 223, 0.25), 0 5px 20px rgba(0, 0, 0, 0.0625);
+  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(249, 250, 254, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(2, 3, 7, 0.03125), 0 5px 20px rgba(72, 108, 223, 0.25), 0 5px 20px rgba(2, 3, 7, 0.0625);
 }
 .icon-navigation ul .mail img {
   background-color: #ee347f;
-  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(255, 255, 255, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(0, 0, 0, 0.03125), 0 5px 20px rgba(238, 52, 127, 0.25), 0 5px 20px rgba(0, 0, 0, 0.0625);
+  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(249, 250, 254, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(2, 3, 7, 0.03125), 0 5px 20px rgba(238, 52, 127, 0.25), 0 5px 20px rgba(2, 3, 7, 0.0625);
 }
 .icon-navigation ul a {
   transition: opacity 0.125s ease;
@@ -171,8 +155,8 @@ header > section h2 {
 }
 
 .icon-list {
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
 }
 @media screen and (min-width: 640px) {
   .icon-list {
@@ -182,7 +166,6 @@ header > section h2 {
 }
 @media screen and (min-width: 1216px) {
   .icon-list {
-    min-width: 384px;
     max-width: 640px;
   }
 }
@@ -230,6 +213,8 @@ header > section h2 {
 .icon-list h3 {
   position: relative;
   transform-style: preserve-3d;
+  color: #020307;
+  text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
   font-size: 2em;
   font-weight: 700;
   line-height: 0.875;
@@ -244,9 +229,6 @@ header > section h2 {
   height: 0.25em;
   transform: translateZ(-1px);
 }
-.icon-list .heading {
-  color: #020307;
-}
 .icon-list .icon {
   width: 80px;
   height: 80px;
@@ -256,7 +238,7 @@ header > section h2 {
   height: 56px;
 }
 .icon-list .heading-wrapper {
-  height: 80px;
+  height: 56px;
 }
 @media screen and (min-width: 1216px) {
   .icon-list .icon {
@@ -268,7 +250,7 @@ header > section h2 {
     height: 64px;
   }
   .icon-list .heading-wrapper {
-    height: 96px;
+    height: 64px;
   }
 }
 .icon-list li.swift .icon {
@@ -276,18 +258,18 @@ header > section h2 {
 }
 .icon-list li.swift .heading,
 .icon-list li.swift h3 {
-  text-shadow: 0 0.25em 1em rgba(240, 81, 55, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+  text-shadow: 0 0.25em 1em rgba(240, 81, 55, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
 }
 .icon-list li.swift .heading::after,
 .icon-list li.swift h3::after {
   background-color: rgba(240, 81, 55, 0.25);
 }
 .icon-list li.swift .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(240, 81, 55, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(240, 81, 55, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.swift .icon {
-    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
   }
 }
 .icon-list li.swiftui .icon {
@@ -295,18 +277,18 @@ header > section h2 {
 }
 .icon-list li.swiftui .heading,
 .icon-list li.swiftui h3 {
-  text-shadow: 0 0.25em 1em rgba(72, 108, 223, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+  text-shadow: 0 0.25em 1em rgba(72, 108, 223, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
 }
 .icon-list li.swiftui .heading::after,
 .icon-list li.swiftui h3::after {
   background-color: rgba(72, 108, 223, 0.25);
 }
 .icon-list li.swiftui .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(72, 108, 223, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(72, 108, 223, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.swiftui .icon {
-    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
   }
 }
 .icon-list li.react .icon {
@@ -314,18 +296,18 @@ header > section h2 {
 }
 .icon-list li.react .heading,
 .icon-list li.react h3 {
-  text-shadow: 0 0.25em 1em rgba(0, 122, 214, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+  text-shadow: 0 0.25em 1em rgba(0, 122, 214, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
 }
 .icon-list li.react .heading::after,
 .icon-list li.react h3::after {
   background-color: rgba(0, 122, 214, 0.25);
 }
 .icon-list li.react .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(0, 122, 214, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(0, 122, 214, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.react .icon {
-    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
   }
 }
 .icon-list li.typescript .icon {
@@ -333,18 +315,18 @@ header > section h2 {
 }
 .icon-list li.typescript .heading,
 .icon-list li.typescript h3 {
-  text-shadow: 0 0.25em 1em rgba(2, 123, 167, 0.25), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+  text-shadow: 0 0.25em 1em rgba(2, 123, 167, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
 }
 .icon-list li.typescript .heading::after,
 .icon-list li.typescript h3::after {
   background-color: rgba(2, 123, 167, 0.25);
 }
 .icon-list li.typescript .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(255, 255, 255, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(0, 0, 0, 0.03125), 0 10px 40px rgba(2, 123, 167, 0.25), 0 10px 40px rgba(0, 0, 0, 0.0625);
+  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(2, 123, 167, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.typescript .icon {
-    box-shadow: inset -8px 8px 16px rgba(255, 255, 255, 0.125), inset 8px -8px 16px rgba(0, 0, 0, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.25), 0 12px 48px rgba(0, 0, 0, 0.0625);
+    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
   }
 }
 @media screen and (min-width: 640px) {
@@ -362,6 +344,11 @@ header > section h2 {
 .icon-list.icon-list-content li {
   align-items: flex-start;
 }
+.icon-list.icon-list-white .heading,
+.icon-list.icon-list-white h3 {
+  color: #f9fafe;
+  text-shadow: 0 0.25em 1em rgba(249, 250, 254, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+}
 .icon-list.icon-list-white .heading::after,
 .icon-list.icon-list-white h3::after {
   background-color: rgba(249, 250, 254, 0.25);
@@ -373,10 +360,11 @@ main {
 }
 main h2 {
   color: #a1b3ef;
-  text-shadow: 0 0.25em 1em rgba(161, 179, 239, 0.125), 0 0.25em 1em rgba(0, 0, 0, 0.0625);
+  text-shadow: 0 0.25em 1em rgba(161, 179, 239, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
 }
 main h3 {
   color: #f9fafe;
+  text-shadow: 0 0.25em 1em rgba(249, 250, 254, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
 }
 main p {
   color: #a1b3ef;

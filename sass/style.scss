@@ -1,41 +1,9 @@
 @use "sass:math";
 @use "sass:list";
 
-$orange-color: #f05137;
-$pink-color: #ee347f;
-$purple-color: #bc4dbc;
-$indigo-color: #486cdf;
-$blue-color: #007ad6;
-$teal-color: #027ba7;
-
-$primary-color: $indigo-color;
-
-$color-weight: math.div(100%, 32);
-$background-color: mix($primary-color, white, $color-weight);
-$foreground-color: mix($primary-color, black, $color-weight);
-
-$breakpoint-small: 512px;
-$breakpoint-medium: 640px;
-$breakpoint-large: 1216px;
-
-@function weight($amount) {
-  @return math.pow(0.5, $amount);
-}
-
-@function lighten($color, $amount) {
-  @return mix($color, $background-color, 100% * weight($amount));
-}
-
-@function shadow($blur, $color) {
-  $offset: math.div($blur, 4);
-  @return 0 $offset $blur $color, 0 $offset $blur rgba(black, weight(4));
-}
-
-@function inset-shadow($blur) {
-  $offset: math.div($blur, 2);
-  @return inset 0 - $offset $offset $blur rgba(white, weight(3)),
-    inset $offset 0 - $offset $blur rgba(black, weight(5));
-}
+@use "colors" as *;
+@use "variables" as *;
+@use "functions" as *;
 
 html {
   scroll-behavior: smooth;
@@ -44,85 +12,81 @@ html {
 body {
   background-color: $background-color;
 
-  font-size: 16px;
+  font-size: $font-size;
   color: $foreground-color;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: $font-family;
 
   @media screen and (min-width: $breakpoint-large) {
-    font-size: 20px;
+    font-size: $font-size-large;
   }
 }
 
 @mixin heading-color($color) {
   color: $color;
-  text-shadow: shadow(1em, rgba($color, weight(3)));
+  text-shadow: shadow(
+    $heading-text-shadow-blur,
+    rgba($color, $heading-text-shadow-weight)
+  );
 }
 
 h1,
 h2,
 h3 {
-  @include heading-color($foreground-color);
+  @include heading-color($heading-color);
 
-  font-weight: 700;
-  line-height: 0.875;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  margin-bottom: $heading-margin-bottom;
 }
 
 h1 {
-  margin-top: 0.5em;
-
-  font-size: 4em;
-  font-weight: 900;
   text-align: center;
+  font-size: $h1-font-size;
+  font-weight: $h1-font-weight;
 }
 
 h2 {
-  @include heading-color(lighten($primary-color, 2));
+  @include heading-color($h2-color);
 
-  margin-bottom: 0.5em;
   width: 100%;
 
-  font-size: 3em;
-
-  @media screen and (min-width: $breakpoint-medium) {
-    margin-bottom: 1em;
-  }
+  font-size: $h2-font-size;
 }
 
 h3 {
-  font-size: 2em;
+  font-size: $h3-font-size;
 }
 
 p {
-  max-width: 48ch;
+  max-width: $p-max-width;
 
-  line-height: 1.5;
+  color: $p-color;
+  line-height: $p-line-height;
   text-align: justify;
-  color: lighten($foreground-color, 1);
 }
 
 header,
 main > section {
   margin: 0 auto;
-  max-width: 1536px;
+  max-width: $max-width;
 }
 
 header {
   position: relative;
 
-  #down {
+  #down-navigation {
     position: absolute;
     left: 50%;
-    bottom: 2em;
+    bottom: $down-navigation-bottom;
     transform: translateX(-50%);
 
     a {
-      opacity: 0.5;
+      opacity: $down-navigation-opacity;
 
-      transition: opacity 0.125s ease;
+      transition: opacity $hover-transition-duration ease;
 
       &:hover {
-        opacity: 1;
+        opacity: $down-navigation-hover-opacity;
       }
     }
   }
@@ -144,7 +108,7 @@ header > section {
     justify-content: center;
     align-items: center;
 
-    padding: 3em;
+    padding: $header-padding;
     box-sizing: border-box;
 
     &:first-child {
@@ -152,27 +116,15 @@ header > section {
     }
   }
 
-  h2 {
-    margin-bottom: 1em;
-  }
-
   @media screen and (min-width: $breakpoint-small) {
     & > div {
-      padding: 6em;
-    }
-
-    h2 {
-      margin-bottom: 1.5em;
+      padding: $header-padding-small;
     }
   }
 
   @media screen and (min-width: $breakpoint-medium) {
     & > div {
-      padding: 8em;
-    }
-
-    h2 {
-      margin-bottom: 2.5em;
+      padding: $header-padding-medium;
     }
   }
 
@@ -182,16 +134,16 @@ header > section {
     & > div {
       flex: 1;
 
-      padding: 4em;
+      padding: $header-padding-large;
 
       &:first-child {
-        flex: 4;
+        flex: nth($header-div-flex, 1);
 
         min-height: auto;
       }
 
       &:last-child {
-        flex: 3;
+        flex: nth($header-div-flex, 2);
       }
     }
 
@@ -205,68 +157,60 @@ header > section {
   display: flex;
   flex-direction: row;
 
-  margin: 2em 0;
-
-  $size: 40px;
-
   li + li {
-    margin-left: math.div($size, 2);
+    margin-left: $icon-navigation-margin;
   }
 
   img {
-    width: $size;
-    height: $size;
+    width: $icon-navigation-size;
+    height: $icon-navigation-size;
     border-radius: 50%;
   }
 
   @mixin icon-color($color) {
     img {
       background-color: $color;
-      box-shadow: inset-shadow(math.div($size, 6)),
-        shadow(math.div($size, 2), rgba($color, weight(2)));
+      box-shadow: icon-shadow($icon-navigation-size, $color);
     }
   }
 
   .github {
-    @include icon-color($blue-color);
+    @include icon-color($github-color);
   }
 
   .linkedin {
-    @include icon-color($indigo-color);
+    @include icon-color($linkedin-color);
   }
 
   .mail {
-    @include icon-color($pink-color);
+    @include icon-color($mail-color);
   }
 
   a {
-    transition: opacity 0.125s ease;
+    transition: opacity $hover-transition-duration ease;
 
     &:hover {
-      opacity: 0.875;
+      opacity: $icon-navigation-hover-opacity;
     }
 
     &:active {
-      opacity: 0.75;
+      opacity: $icon-navigation-active-opacity;
     }
   }
 }
 
 .icon-list {
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
 
   @media screen and (min-width: $breakpoint-medium) {
-    min-width: 384px;
-    max-width: 512px;
+    min-width: $icon-list-min-width-medium;
+    max-width: $icon-list-max-width-medium;
   }
 
   @media screen and (min-width: $breakpoint-large) {
-    min-width: 384px;
-    max-width: 640px;
+    max-width: $icon-list-max-width-large;
   }
-
-  $margin: 2em;
 
   li {
     display: flex;
@@ -276,7 +220,7 @@ header > section {
       flex-direction: row;
 
       .icon {
-        margin-right: $margin;
+        margin-right: $icon-list-margin;
       }
 
       .heading-wrapper {
@@ -288,7 +232,7 @@ header > section {
       flex-direction: row-reverse;
 
       .icon {
-        margin-left: $margin;
+        margin-left: $icon-list-margin;
       }
 
       .heading-wrapper {
@@ -298,7 +242,7 @@ header > section {
   }
 
   li + li {
-    margin-top: $margin;
+    margin-top: $icon-list-margin;
   }
 
   .icon {
@@ -325,37 +269,30 @@ header > section {
     position: relative;
     transform-style: preserve-3d;
 
-    font-size: 2em;
-    font-weight: 700;
-    line-height: 0.875;
+    @include heading-color($heading-color);
+
+    font-size: $h3-font-size;
+    font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
 
     &::after {
       content: "";
 
       position: absolute;
 
-      $width: 0.25em;
-      left: -$width;
-      right: -$width;
+      left: -$icon-list-underline-height;
+      right: -$icon-list-underline-height;
       bottom: 0;
-      height: $width;
+      height: $icon-list-underline-height;
 
       transform: translateZ(-1px);
     }
   }
 
-  .heading {
-    color: $foreground-color;
-  }
-
-  $icon-size-small: (80px, 56px);
-  $icon-size-large: (96px, 64px);
-
-  $breakpoint: $breakpoint-large;
-
   @mixin icon-size($icon-size) {
+    $size: nth($icon-size, 1);
+
     .icon {
-      $size: nth($icon-size, 1);
       width: $size;
       height: $size;
 
@@ -367,14 +304,14 @@ header > section {
     }
 
     .heading-wrapper {
-      height: nth($icon-size, 1);
+      height: $size;
     }
   }
 
-  @include icon-size($icon-size-small);
+  @include icon-size($icon-list-icon-size);
 
-  @media screen and (min-width: $breakpoint) {
-    @include icon-size($icon-size-large);
+  @media screen and (min-width: $breakpoint-large) {
+    @include icon-size($icon-list-icon-size-large);
   }
 
   @mixin icon-color($color) {
@@ -384,44 +321,46 @@ header > section {
 
     .heading,
     h3 {
-      text-shadow: shadow(1em, rgba($color, weight(2)));
+      text-shadow: shadow(
+        $icon-list-shadow-blur,
+        rgba($color, $icon-list-shadow-color-weight)
+      );
 
       &::after {
-        background-color: rgba($color, weight(2));
+        background-color: rgba($color, $icon-list-underline-weight);
       }
     }
   }
 
-  @mixin icon-shadow($color, $icon-size) {
+  @mixin icon-shadow($icon-size, $color) {
     .icon {
-      box-shadow: inset-shadow(math.div($icon-size, 6)),
-        shadow(math.div($icon-size, 2), rgba($color, weight(2)));
+      box-shadow: icon-shadow($icon-size, $color);
     }
   }
 
   @mixin icon($color) {
     @include icon-color($color);
-    @include icon-shadow($color, nth($icon-size-small, 1));
+    @include icon-shadow(nth($icon-list-icon-size, 1), $color);
 
-    @media screen and (min-width: $breakpoint) {
-      @include icon-shadow($color, nth($icon-size-large, 1));
+    @media screen and (min-width: $breakpoint-large) {
+      @include icon-shadow(nth($icon-list-icon-size-large, 1), $color);
     }
   }
 
   li.swift {
-    @include icon($orange-color);
+    @include icon($swift-color);
   }
 
   li.swiftui {
-    @include icon($indigo-color);
+    @include icon($swiftui-color);
   }
 
   li.react {
-    @include icon($blue-color);
+    @include icon($react-color);
   }
 
   li.typescript {
-    @include icon($teal-color);
+    @include icon($typescript-color);
   }
 
   &.icon-list-content {
@@ -443,48 +382,50 @@ header > section {
   &.icon-list-white {
     .heading,
     h3 {
+      @include heading-color($main-foreground-color);
+
       &::after {
-        background-color: rgba($background-color, weight(2));
+        background-color: rgba(
+          $main-foreground-color,
+          $icon-list-underline-weight
+        );
       }
     }
   }
 }
 
 main {
-  background-color: $primary-color;
-  box-shadow: inset 0 0 8em rgba(black, weight(4)),
-    0 0 4em rgba($primary-color, weight(2));
+  background-color: $main-background-color;
+  box-shadow: $main-box-shadow;
 
   h2 {
-    @include heading-color(
-      mix($background-color, $primary-color, 100% * weight(1))
-    );
+    @include heading-color($main-h2-color);
   }
 
   h3 {
-    color: $background-color;
+    @include heading-color($main-foreground-color);
   }
 
   p {
-    color: mix($background-color, $primary-color, 100% * weight(1));
+    color: $main-p-color;
   }
 }
 
 main > section {
-  padding: 2em;
+  padding: $main-padding;
 
   @media screen and (min-width: $breakpoint-medium) {
-    padding: 4em;
+    padding: $main-padding-medium;
   }
 }
 
 footer {
-  padding: 2em;
+  padding: $footer-padding;
 
   p {
     margin: 0 auto;
 
     text-align: center;
-    color: lighten($foreground-color, 2);
+    color: $footer-p-color;
   }
 }

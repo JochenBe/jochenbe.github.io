@@ -1,0 +1,28 @@
+@use "sass:math";
+
+@use "colors" as *;
+
+@function weight($amount) {
+  @return math.pow(0.5, $amount);
+}
+
+@function lighten($color, $amount) {
+  @return mix($color, $background-color, 100% * weight($amount));
+}
+
+@function shadow($blur, $color) {
+  $offset: math.div($blur, 4);
+  @return 0 $offset $blur $color,
+    0 $offset $blur rgba($foreground-color, weight(4));
+}
+
+@function inset-shadow($blur) {
+  $offset: math.div($blur, 2);
+  @return inset 0 - $offset $offset $blur rgba($background-color, weight(3)),
+    inset $offset 0 - $offset $blur rgba($foreground-color, weight(5));
+}
+
+@function icon-shadow($size, $color) {
+  @return inset-shadow(math.div($size, 6)),
+    shadow(math.div($size, 2), rgba($color, weight(2)));
+}
