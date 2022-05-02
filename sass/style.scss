@@ -185,7 +185,13 @@ header > section {
       padding: 4em;
 
       &:first-child {
+        flex: 4;
+
         min-height: auto;
+      }
+
+      &:last-child {
+        flex: 3;
       }
     }
 

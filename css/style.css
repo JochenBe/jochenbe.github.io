@@ -124,7 +124,11 @@ header > section h2 {
     padding: 4em;
   }
   header > section > div:first-child {
+    flex: 4;
     min-height: auto;
+  }
+  header > section > div:last-child {
+    flex: 3;
   }
   header > section h2 {
     display: none;
