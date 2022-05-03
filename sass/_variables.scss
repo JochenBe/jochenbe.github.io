@@ -16,13 +16,16 @@ $font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
 
 $heading-font-weight: 700;
 $heading-line-height: 0.875;
-$heading-margin-bottom: 1em;
+$heading-margin-bottom: 1.5em;
 $heading-color: $foreground-color;
 $heading-text-shadow-blur: 1em;
 $heading-text-shadow-weight: weight(3);
 
+$jochenbernard-margin-bottom: 2em;
+
 $h1-font-size: 4em;
 $h1-font-weight: 900;
+$h1-margin-bottom: 0.75em;
 
 $h2-font-size: 3em;
 $h2-color: lighten($primary-color, 2);
