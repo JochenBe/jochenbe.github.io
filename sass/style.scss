@@ -37,6 +37,14 @@ h3 {
   font-weight: $heading-font-weight;
   line-height: $heading-line-height;
   margin-bottom: $heading-margin-bottom;
+
+  @media screen and (min-width: $breakpoint-small) {
+    margin-bottom: $heading-margin-bottom-small;
+  }
+
+  @media screen and (min-width: $breakpoint-medium) {
+    margin-bottom: $heading-margin-bottom-medium;
+  }
 }
 
 h1 {
@@ -408,6 +416,12 @@ main {
 
   h2 {
     @include heading-color($main-h2-color);
+
+    margin-bottom: $heading-main-margin-bottom;
+
+    @media screen and (min-width: $breakpoint-medium) {
+      margin-bottom: $heading-main-margin-bottom-medium;
+    }
   }
 
   h3 {

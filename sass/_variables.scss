@@ -16,7 +16,11 @@ $font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
 
 $heading-font-weight: 700;
 $heading-line-height: 0.875;
-$heading-margin-bottom: 1.5em;
+$heading-margin-bottom: 1em;
+$heading-margin-bottom-small: 1.5em;
+$heading-margin-bottom-medium: 2em;
+$heading-main-margin-bottom: 0.5em;
+$heading-main-margin-bottom-medium: 1em;
 $heading-color: $foreground-color;
 $heading-text-shadow-blur: 1em;
 $heading-text-shadow-weight: weight(3);
