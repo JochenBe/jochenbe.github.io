@@ -276,6 +276,8 @@ header > section {
     position: relative;
     transform-style: preserve-3d;
 
+    margin: 0;
+
     @include heading-color($heading-color);
 
     font-size: $h3-font-size;
@@ -297,9 +299,8 @@ header > section {
   }
 
   @mixin icon-size($icon-size) {
-    $size: nth($icon-size, 1);
-
     .icon {
+      $size: nth($icon-size, 1);
       width: $size;
       height: $size;
 
@@ -311,7 +312,7 @@ header > section {
     }
 
     .heading-wrapper {
-      height: $size;
+      height: nth($icon-size, 1);
     }
   }
 

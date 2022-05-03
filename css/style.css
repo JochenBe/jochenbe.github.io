@@ -218,6 +218,7 @@ header > section > div:first-child {
 .icon-list h3 {
   position: relative;
   transform-style: preserve-3d;
+  margin: 0;
   color: #020307;
   text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
   font-size: 2em;
@@ -243,7 +244,7 @@ header > section > div:first-child {
   height: 56px;
 }
 .icon-list .heading-wrapper {
-  height: 56px;
+  height: 80px;
 }
 @media screen and (min-width: 1216px) {
   .icon-list .icon {
@@ -255,7 +256,7 @@ header > section > div:first-child {
     height: 64px;
   }
   .icon-list .heading-wrapper {
-    height: 64px;
+    height: 96px;
   }
 }
 .icon-list li.swift .icon {
