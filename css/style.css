@@ -400,6 +400,7 @@ main > section {
 footer {
   width: 100%;
   padding: 1em;
+  background-color: #3d5bbd;
 }
 @media screen and (min-width: 512px) {
   footer {
@@ -416,7 +417,7 @@ footer p {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  color: #bbbcc0;
+  color: #7490e7;
 }
 
 /*# sourceMappingURL=style.css.map */

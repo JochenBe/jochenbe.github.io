@@ -412,6 +412,7 @@ footer {
   width: 100%;
 
   padding: $footer-padding;
+  background-color: $footer-background-color;
 
   @media screen and (min-width: $breakpoint-small) {
     padding: $footer-padding-small;
@@ -427,6 +428,6 @@ footer {
     margin-right: auto;
 
     text-align: center;
-    color: $footer-p-color;
+    color: $footer-color;
   }
 }

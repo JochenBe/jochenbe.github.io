@@ -87,4 +87,5 @@ $main-p-color: mix(
 $footer-padding: 1em;
 $footer-padding-small: 1.5em;
 $footer-padding-medium: 2em;
-$footer-p-color: lighten($foreground-color, 2);
+$footer-background-color: darken($primary-color, 0.25);
+$footer-color: mix($background-color, $primary-color, 100% * weight(2));

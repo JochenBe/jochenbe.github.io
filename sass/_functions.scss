@@ -10,6 +10,10 @@
   @return mix($color, $background-color, 100% * weight($amount));
 }
 
+@function darken($color, $amount) {
+  @return mix($color, $foreground-color, 100% * weight($amount));
+}
+
 @function shadow($blur, $color) {
   $offset: math.div($blur, 4);
   @return 0 $offset $blur $color,
