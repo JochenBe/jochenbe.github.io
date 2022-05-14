@@ -18,38 +18,27 @@ h1,
 h2,
 h3 {
   color: #020307;
-  text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  text-shadow: shadow(1em, rgba(2, 3, 7, 0.125));
   font-weight: 700;
   line-height: 0.875;
-  margin-bottom: 1em;
-}
-@media screen and (min-width: 512px) {
-  h1,
-h2,
-h3 {
-    margin-bottom: 1.5em;
-  }
-}
-@media screen and (min-width: 640px) {
-  h1,
-h2,
-h3 {
-    margin-bottom: 2em;
-  }
 }
 
 h1 {
   text-align: center;
   font-size: 4em;
   font-weight: 900;
-  margin-bottom: 0.75em;
+}
+* + h1 {
+  margin-top: 0.5em;
 }
 
 h2 {
   color: #cdd7f6;
-  text-shadow: 0 0.25em 1em rgba(205, 215, 246, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
-  width: 100%;
+  text-shadow: shadow(1em, rgba(205, 215, 246, 0.125));
   font-size: 3em;
+}
+h2 + * {
+  margin-top: 2em;
 }
 
 h3 {
@@ -64,74 +53,82 @@ p {
 }
 
 header,
-main > section {
-  margin: 0 auto;
-  max-width: 1536px;
+main > section,
+footer {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-header {
-  position: relative;
+#down-navigation {
+  padding-bottom: 1em;
+  text-align: center;
 }
-header #jochenbernard {
-  margin-bottom: 2em;
-}
-header #down-navigation {
-  position: absolute;
-  left: 50%;
-  bottom: 2em;
-  transform: translateX(-50%);
-}
-header #down-navigation a {
+#down-navigation a {
   opacity: 0.5;
   transition: opacity 0.125s ease;
 }
-header #down-navigation a:hover {
+#down-navigation a:hover {
   opacity: 1;
+}
+
+header,
+main {
+  min-height: 100vh;
+}
+
+header,
+header > section,
+main,
+main > section {
+  display: flex;
+  flex-direction: column;
 }
 
 header > section,
 main > section {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-header > section > div {
+header > section > section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3em;
-  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 2em;
 }
-header > section > div:first-child {
-  min-height: 100vh;
+header > section > section:first-child {
+  padding-bottom: 0;
 }
 @media screen and (min-width: 512px) {
-  header > section > div {
-    padding: 6em;
+  header > section > section {
+    padding: 4em;
+  }
+  header > section > section:first-child {
+    padding-bottom: 0;
   }
 }
 @media screen and (min-width: 640px) {
-  header > section > div {
-    padding: 8em;
+  header > section > section {
+    padding: 6em;
+  }
+  header > section > section:first-child {
+    padding-bottom: 0;
   }
 }
 @media screen and (min-width: 1216px) {
   header > section {
     flex-direction: row;
   }
-  header > section > div {
-    flex: 1;
+  header > section > section {
     padding: 4em;
   }
-  header > section > div:first-child {
-    flex: 4;
-    min-height: auto;
-  }
-  header > section > div:last-child {
-    flex: 3;
+  header > section > section:first-child {
+    padding-bottom: 4em;
   }
   header > section h2 {
     display: none;
@@ -139,29 +136,10 @@ header > section > div:first-child {
 }
 
 .icon-navigation ul {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 3em;
+  margin: 2em 0;
 }
 .icon-navigation ul li + li {
   margin-left: 20px;
-}
-.icon-navigation ul img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.icon-navigation ul .github img {
-  background-color: #007ad6;
-  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(249, 250, 254, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(2, 3, 7, 0.03125), 0 5px 20px rgba(0, 122, 214, 0.25), 0 5px 20px rgba(2, 3, 7, 0.0625);
-}
-.icon-navigation ul .linkedin img {
-  background-color: #486cdf;
-  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(249, 250, 254, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(2, 3, 7, 0.03125), 0 5px 20px rgba(72, 108, 223, 0.25), 0 5px 20px rgba(2, 3, 7, 0.0625);
-}
-.icon-navigation ul .mail img {
-  background-color: #ee347f;
-  box-shadow: inset -3.3333333333px 3.3333333333px 6.6666666667px rgba(249, 250, 254, 0.125), inset 3.3333333333px -3.3333333333px 6.6666666667px rgba(2, 3, 7, 0.03125), 0 5px 20px rgba(238, 52, 127, 0.25), 0 5px 20px rgba(2, 3, 7, 0.0625);
 }
 .icon-navigation ul a {
   transition: opacity 0.125s ease;
@@ -172,20 +150,34 @@ header > section > div:first-child {
 .icon-navigation ul a:active {
   opacity: 0.75;
 }
+.icon-navigation ul img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.icon-navigation ul .github img {
+  background-color: #007ad6;
+  box-shadow: icon-shadow(40px, #007ad6);
+}
+.icon-navigation ul .linkedin img {
+  background-color: #486cdf;
+  box-shadow: icon-shadow(40px, #486cdf);
+}
+.icon-navigation ul .mail img {
+  background-color: #ee347f;
+  box-shadow: icon-shadow(40px, #ee347f);
+}
 
 .icon-list {
   width: 100%;
-  margin: 0 auto;
-}
-@media screen and (min-width: 640px) {
-  .icon-list {
-    min-width: 384px;
-    max-width: 512px;
-  }
+  max-width: 512px;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media screen and (min-width: 1216px) {
   .icon-list {
     max-width: 640px;
+    min-width: 448px;
   }
 }
 .icon-list li {
@@ -219,10 +211,6 @@ header > section > div:first-child {
   justify-content: center;
   border-radius: 50%;
 }
-.icon-list .content {
-  display: flex;
-  flex-direction: column;
-}
 .icon-list .heading-wrapper {
   display: flex;
   flex-direction: column;
@@ -232,9 +220,8 @@ header > section > div:first-child {
 .icon-list h3 {
   position: relative;
   transform-style: preserve-3d;
-  margin: 0;
   color: #020307;
-  text-shadow: 0 0.25em 1em rgba(2, 3, 7, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  text-shadow: shadow(1em, rgba(2, 3, 7, 0.125));
   font-size: 2em;
   font-weight: 700;
   line-height: 0.875;
@@ -243,9 +230,9 @@ header > section > div:first-child {
 .icon-list h3::after {
   content: "";
   position: absolute;
+  bottom: 0;
   left: -0.25em;
   right: -0.25em;
-  bottom: 0;
   height: 0.25em;
   transform: translateZ(-1px);
 }
@@ -273,104 +260,115 @@ header > section > div:first-child {
     height: 96px;
   }
 }
-.icon-list li.swift .icon {
-  background-color: #f05137;
-}
 .icon-list li.swift .heading,
 .icon-list li.swift h3 {
-  text-shadow: 0 0.25em 1em rgba(240, 81, 55, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  color: #f05137;
+  text-shadow: shadow(1em, rgba(240, 81, 55, 0.125));
 }
 .icon-list li.swift .heading::after,
 .icon-list li.swift h3::after {
   background-color: rgba(240, 81, 55, 0.25);
 }
 .icon-list li.swift .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(240, 81, 55, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
+  background-color: #f05137;
+}
+.icon-list li.swift .heading,
+.icon-list li.swift h3 {
+  color: #020307;
+}
+.icon-list li.swift .icon {
+  box-shadow: icon-shadow(80px, #f05137);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.swift .icon {
-    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
+    box-shadow: icon-shadow(96px, #f05137);
   }
-}
-.icon-list li.swiftui .icon {
-  background-color: #486cdf;
 }
 .icon-list li.swiftui .heading,
 .icon-list li.swiftui h3 {
-  text-shadow: 0 0.25em 1em rgba(72, 108, 223, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  color: #486cdf;
+  text-shadow: shadow(1em, rgba(72, 108, 223, 0.125));
 }
 .icon-list li.swiftui .heading::after,
 .icon-list li.swiftui h3::after {
   background-color: rgba(72, 108, 223, 0.25);
 }
 .icon-list li.swiftui .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(72, 108, 223, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
+  background-color: #486cdf;
+}
+.icon-list li.swiftui .heading,
+.icon-list li.swiftui h3 {
+  color: #020307;
+}
+.icon-list li.swiftui .icon {
+  box-shadow: icon-shadow(80px, #486cdf);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.swiftui .icon {
-    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
+    box-shadow: icon-shadow(96px, #486cdf);
   }
-}
-.icon-list li.react .icon {
-  background-color: #007ad6;
 }
 .icon-list li.react .heading,
 .icon-list li.react h3 {
-  text-shadow: 0 0.25em 1em rgba(0, 122, 214, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  color: #007ad6;
+  text-shadow: shadow(1em, rgba(0, 122, 214, 0.125));
 }
 .icon-list li.react .heading::after,
 .icon-list li.react h3::after {
   background-color: rgba(0, 122, 214, 0.25);
 }
 .icon-list li.react .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(0, 122, 214, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
+  background-color: #007ad6;
+}
+.icon-list li.react .heading,
+.icon-list li.react h3 {
+  color: #020307;
+}
+.icon-list li.react .icon {
+  box-shadow: icon-shadow(80px, #007ad6);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.react .icon {
-    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
+    box-shadow: icon-shadow(96px, #007ad6);
   }
-}
-.icon-list li.typescript .icon {
-  background-color: #027ba7;
 }
 .icon-list li.typescript .heading,
 .icon-list li.typescript h3 {
-  text-shadow: 0 0.25em 1em rgba(2, 123, 167, 0.25), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  color: #027ba7;
+  text-shadow: shadow(1em, rgba(2, 123, 167, 0.125));
 }
 .icon-list li.typescript .heading::after,
 .icon-list li.typescript h3::after {
   background-color: rgba(2, 123, 167, 0.25);
 }
 .icon-list li.typescript .icon {
-  box-shadow: inset -6.6666666667px 6.6666666667px 13.3333333333px rgba(249, 250, 254, 0.125), inset 6.6666666667px -6.6666666667px 13.3333333333px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(2, 123, 167, 0.25), 0 10px 40px rgba(2, 3, 7, 0.0625);
+  background-color: #027ba7;
+}
+.icon-list li.typescript .heading,
+.icon-list li.typescript h3 {
+  color: #020307;
+}
+.icon-list li.typescript .icon {
+  box-shadow: icon-shadow(80px, #027ba7);
 }
 @media screen and (min-width: 1216px) {
   .icon-list li.typescript .icon {
-    box-shadow: inset -8px 8px 16px rgba(249, 250, 254, 0.125), inset 8px -8px 16px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.25), 0 12px 48px rgba(2, 3, 7, 0.0625);
+    box-shadow: icon-shadow(96px, #027ba7);
   }
 }
-@media screen and (min-width: 640px) {
-  .icon-list.icon-list-content {
-    min-width: 384px;
-    max-width: 768px;
-  }
-}
-@media screen and (min-width: 1216px) {
-  .icon-list.icon-list-content {
-    min-width: 512px;
-    max-width: 1024px;
-  }
+.icon-list.icon-list-content {
+  max-width: 1024px;
 }
 .icon-list.icon-list-content li {
   align-items: flex-start;
 }
-.icon-list.icon-list-white .heading,
-.icon-list.icon-list-white h3 {
+.icon-list.icon-list-main .heading,
+.icon-list.icon-list-main h3 {
   color: #f9fafe;
-  text-shadow: 0 0.25em 1em rgba(249, 250, 254, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  text-shadow: shadow(1em, rgba(249, 250, 254, 0.125));
 }
-.icon-list.icon-list-white .heading::after,
-.icon-list.icon-list-white h3::after {
+.icon-list.icon-list-main .heading::after,
+.icon-list.icon-list-main h3::after {
   background-color: rgba(249, 250, 254, 0.25);
 }
 
@@ -380,17 +378,11 @@ main {
 }
 main h2 {
   color: #a1b3ef;
-  text-shadow: 0 0.25em 1em rgba(161, 179, 239, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
-  margin-bottom: 0.5em;
-}
-@media screen and (min-width: 640px) {
-  main h2 {
-    margin-bottom: 1em;
-  }
+  text-shadow: shadow(1em, rgba(161, 179, 239, 0.125));
 }
 main h3 {
   color: #f9fafe;
-  text-shadow: 0 0.25em 1em rgba(249, 250, 254, 0.125), 0 0.25em 1em rgba(2, 3, 7, 0.0625);
+  text-shadow: shadow(1em, rgba(249, 250, 254, 0.125));
 }
 main p {
   color: #a1b3ef;
@@ -401,15 +393,28 @@ main > section {
 }
 @media screen and (min-width: 640px) {
   main > section {
-    padding: 4em;
+    padding: 3em;
   }
 }
 
 footer {
-  padding: 2em;
+  width: 100%;
+  padding: 1em;
+}
+@media screen and (min-width: 512px) {
+  footer {
+    padding: 1.5em;
+  }
+}
+@media screen and (min-width: 640px) {
+  footer {
+    padding: 2em;
+  }
 }
 footer p {
-  margin: 0 auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   color: #bbbcc0;
 }

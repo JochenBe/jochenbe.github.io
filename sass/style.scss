@@ -3,7 +3,6 @@
 
 @use "colors" as *;
 @use "variables" as *;
-@use "functions" as *;
 
 html {
   scroll-behavior: smooth;
@@ -25,7 +24,7 @@ body {
   color: $color;
   text-shadow: shadow(
     $heading-text-shadow-blur,
-    rgba($color, $heading-text-shadow-weight)
+    rgba($color, $heading-text-shadow-alpha)
   );
 }
 
@@ -36,30 +35,26 @@ h3 {
 
   font-weight: $heading-font-weight;
   line-height: $heading-line-height;
-  margin-bottom: $heading-margin-bottom;
-
-  @media screen and (min-width: $breakpoint-small) {
-    margin-bottom: $heading-margin-bottom-small;
-  }
-
-  @media screen and (min-width: $breakpoint-medium) {
-    margin-bottom: $heading-margin-bottom-medium;
-  }
 }
 
 h1 {
   text-align: center;
   font-size: $h1-font-size;
   font-weight: $h1-font-weight;
-  margin-bottom: $h1-margin-bottom;
+
+  * + & {
+    margin-top: $h1-margin-top;
+  }
 }
 
 h2 {
   @include heading-color($h2-color);
 
-  width: 100%;
-
   font-size: $h2-font-size;
+
+  & + * {
+    margin-top: $h2-margin-bottom;
+  }
 }
 
 h3 {
@@ -75,88 +70,90 @@ p {
 }
 
 header,
-main > section {
-  margin: 0 auto;
-  max-width: $max-width;
+main > section,
+footer {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-header {
-  position: relative;
+#down-navigation {
+  padding-bottom: $down-navigation-padding-bottom;
 
-  #jochenbernard {
-    margin-bottom: $jochenbernard-margin-bottom;
-  }
+  text-align: center;
 
-  #down-navigation {
-    position: absolute;
-    left: 50%;
-    bottom: $down-navigation-bottom;
-    transform: translateX(-50%);
+  a {
+    opacity: $down-navigation-opacity;
 
-    a {
-      opacity: $down-navigation-opacity;
+    transition: opacity $hover-transition-duration ease;
 
-      transition: opacity $hover-transition-duration ease;
-
-      &:hover {
-        opacity: $down-navigation-hover-opacity;
-      }
+    &:hover {
+      opacity: $down-navigation-hover-opacity;
     }
   }
 }
 
+header,
+main {
+  min-height: 100vh;
+}
+
+header,
 header > section,
+main,
 main > section {
   display: flex;
   flex-direction: column;
+}
 
-  min-height: 100vh;
-  box-sizing: border-box;
+header > section,
+main > section {
+  flex: 1;
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header > section {
-  & > div {
+  @mixin padding($padding) {
+    padding: $padding;
+
+    &:first-child {
+      padding-bottom: 0;
+    }
+  }
+
+  & > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    padding: $header-padding;
-    box-sizing: border-box;
+    flex-grow: 1;
 
-    &:first-child {
-      min-height: 100vh;
-    }
+    @include padding($header-padding);
   }
 
   @media screen and (min-width: $breakpoint-small) {
-    & > div {
-      padding: $header-padding-small;
+    & > section {
+      @include padding($header-padding-small);
     }
   }
 
   @media screen and (min-width: $breakpoint-medium) {
-    & > div {
-      padding: $header-padding-medium;
+    & > section {
+      @include padding($header-padding-medium);
     }
   }
 
   @media screen and (min-width: $breakpoint-large) {
     flex-direction: row;
 
-    & > div {
-      flex: 1;
-
+    & > section {
       padding: $header-padding-large;
 
       &:first-child {
-        flex: nth($header-div-flex, 1);
-
-        min-height: auto;
-      }
-
-      &:last-child {
-        flex: nth($header-div-flex, 2);
+        padding-bottom: $header-padding-large;
       }
     }
 
@@ -167,13 +164,22 @@ header > section {
 }
 
 .icon-navigation ul {
-  display: flex;
-  flex-direction: row;
-
-  margin-bottom: math.div($h1-margin-bottom, 1em) * $h1-font-size;
+  margin: $icon-navigation-margin-horizontal 0;
 
   li + li {
     margin-left: $icon-navigation-margin;
+  }
+
+  a {
+    transition: opacity $hover-transition-duration ease;
+
+    &:hover {
+      opacity: $icon-navigation-hover-opacity;
+    }
+
+    &:active {
+      opacity: $icon-navigation-active-opacity;
+    }
   }
 
   img {
@@ -200,31 +206,17 @@ header > section {
   .mail {
     @include icon-color($mail-color);
   }
-
-  a {
-    transition: opacity $hover-transition-duration ease;
-
-    &:hover {
-      opacity: $icon-navigation-hover-opacity;
-    }
-
-    &:active {
-      opacity: $icon-navigation-active-opacity;
-    }
-  }
 }
 
 .icon-list {
   width: 100%;
-  margin: 0 auto;
-
-  @media screen and (min-width: $breakpoint-medium) {
-    min-width: $icon-list-min-width-medium;
-    max-width: $icon-list-max-width-medium;
-  }
+  max-width: $icon-list-max-width;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: $breakpoint-large) {
     max-width: $icon-list-max-width-large;
+    min-width: $icon-list-min-width-large;
   }
 
   li {
@@ -268,11 +260,6 @@ header > section {
     border-radius: 50%;
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-  }
-
   .heading-wrapper {
     display: flex;
     flex-direction: column;
@@ -283,8 +270,6 @@ header > section {
   h3 {
     position: relative;
     transform-style: preserve-3d;
-
-    margin: 0;
 
     @include heading-color($heading-color);
 
@@ -297,9 +282,9 @@ header > section {
 
       position: absolute;
 
+      bottom: 0;
       left: -$icon-list-underline-height;
       right: -$icon-list-underline-height;
-      bottom: 0;
       height: $icon-list-underline-height;
 
       transform: translateZ(-1px);
@@ -330,21 +315,27 @@ header > section {
     @include icon-size($icon-list-icon-size-large);
   }
 
+  @mixin icon-color-heading($color) {
+    .heading,
+    h3 {
+      @include heading-color($color);
+
+      &::after {
+        background-color: rgba($color, $icon-list-underline-alpha);
+      }
+    }
+  }
+
   @mixin icon-color($color) {
+    @include icon-color-heading($color);
+
     .icon {
       background-color: $color;
     }
 
     .heading,
     h3 {
-      text-shadow: shadow(
-        $icon-list-shadow-blur,
-        rgba($color, $icon-list-shadow-color-weight)
-      );
-
-      &::after {
-        background-color: rgba($color, $icon-list-underline-weight);
-      }
+      color: $heading-color;
     }
   }
 
@@ -380,33 +371,15 @@ header > section {
   }
 
   &.icon-list-content {
-    @media screen and (min-width: $breakpoint-medium) {
-      min-width: 384px;
-      max-width: 768px;
-    }
-
-    @media screen and (min-width: $breakpoint-large) {
-      min-width: 512px;
-      max-width: 1024px;
-    }
+    max-width: $icon-list-content-max-width;
 
     li {
       align-items: flex-start;
     }
   }
 
-  &.icon-list-white {
-    .heading,
-    h3 {
-      @include heading-color($main-foreground-color);
-
-      &::after {
-        background-color: rgba(
-          $main-foreground-color,
-          $icon-list-underline-weight
-        );
-      }
-    }
+  &.icon-list-main {
+    @include icon-color-heading($main-foreground-color);
   }
 }
 
@@ -416,12 +389,6 @@ main {
 
   h2 {
     @include heading-color($main-h2-color);
-
-    margin-bottom: $heading-main-margin-bottom;
-
-    @media screen and (min-width: $breakpoint-medium) {
-      margin-bottom: $heading-main-margin-bottom-medium;
-    }
   }
 
   h3 {
@@ -442,10 +409,22 @@ main > section {
 }
 
 footer {
+  width: 100%;
+
   padding: $footer-padding;
 
+  @media screen and (min-width: $breakpoint-small) {
+    padding: $footer-padding-small;
+  }
+
+  @media screen and (min-width: $breakpoint-medium) {
+    padding: $footer-padding-medium;
+  }
+
   p {
-    margin: 0 auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
     text-align: center;
     color: $footer-p-color;
