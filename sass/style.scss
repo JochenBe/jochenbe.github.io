@@ -203,7 +203,7 @@ p {
     font-size: $skills-font-size;
   }
 
-  @media screen and (min-width: $skills-breakpoint) {
+  @media screen and (min-width: $breakpoint) {
     max-width: $skills-max-width-large;
 
     li + li {
@@ -274,6 +274,10 @@ p {
     &.quivr {
       @include colored-underline($quivr-color);
     }
+
+    @media screen and (min-width: $breakpoint) {
+      margin-top: $experience-gap-large;
+    }
   }
 
   div {
@@ -294,10 +298,17 @@ header,
 main,
 footer {
   padding: $padding;
+}
 
+header,
+main {
   & > section {
     @include margin-horizontal(auto);
     max-width: $max-width;
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    padding: $padding-large;
   }
 }
 
@@ -324,7 +335,7 @@ header {
       }
     }
 
-    @media screen and (min-width: $header-breakpoint) {
+    @media screen and (min-width: $breakpoint) {
       flex-direction: row;
 
       & > div {
