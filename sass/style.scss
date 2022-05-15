@@ -202,6 +202,30 @@ p {
   p {
     font-size: $skills-font-size;
   }
+
+  @media screen and (min-width: $skills-breakpoint) {
+    max-width: $skills-max-width-large;
+
+    li + li {
+      margin-top: $skills-gap-large;
+    }
+
+    .icon {
+      $size: nth($skills-icon-size-large, 1);
+      width: $size;
+      height: $size;
+    }
+
+    img {
+      $size: nth($skills-icon-size-large, 2);
+      width: $size;
+      height: $size;
+    }
+
+    p {
+      font-size: $skills-font-size-large;
+    }
+  }
 }
 
 .experience {
@@ -285,6 +309,9 @@ header {
 
   & > section {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
     & > div {
       display: flex;
@@ -294,6 +321,19 @@ header {
 
       & + div {
         margin-top: $header-gap;
+      }
+    }
+
+    @media screen and (min-width: $header-breakpoint) {
+      flex-direction: row;
+
+      & > div {
+        flex-grow: 1;
+
+        & + div {
+          margin-top: 0;
+          margin-left: $header-gap;
+        }
       }
     }
   }

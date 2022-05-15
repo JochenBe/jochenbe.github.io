@@ -104,7 +104,7 @@ p {
 
 .skills {
   padding: 2em;
-  max-width: 384px;
+  max-width: 24rem;
   width: 100%;
 }
 .skills li {
@@ -173,11 +173,30 @@ p {
 .skills p {
   font-size: 1.5rem;
 }
+@media screen and (min-width: 64rem) {
+  .skills {
+    max-width: 32rem;
+  }
+  .skills li + li {
+    margin-top: 2em;
+  }
+  .skills .icon {
+    width: 64px;
+    height: 64px;
+  }
+  .skills img {
+    width: 40px;
+    height: 40px;
+  }
+  .skills p {
+    font-size: 2rem;
+  }
+}
 
 .experience {
   margin-left: auto;
   margin-right: auto;
-  max-width: 768px;
+  max-width: 48rem;
 }
 .experience li {
   margin-top: 2em;
@@ -233,7 +252,7 @@ main > section,
 footer > section {
   margin-left: auto;
   margin-right: auto;
-  max-width: 896px;
+  max-width: 72rem;
 }
 
 header {
@@ -243,6 +262,9 @@ header {
 }
 header > section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 header > section > div {
   display: flex;
@@ -252,6 +274,18 @@ header > section > div {
 }
 header > section > div + div {
   margin-top: 1em;
+}
+@media screen and (min-width: 64rem) {
+  header > section {
+    flex-direction: row;
+  }
+  header > section > div {
+    flex-grow: 1;
+  }
+  header > section > div + div {
+    margin-top: 0;
+    margin-left: 1em;
+  }
 }
 
 #main-footer {
