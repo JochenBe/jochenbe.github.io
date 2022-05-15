@@ -46,7 +46,7 @@
   <body>
     <header id="header">
       <section>
-        <section>
+        <div>
           <img
             id="jochenbernard"
             width="112"
@@ -60,8 +60,8 @@
             alt="Jochen Bernard"
           />
           <h1>Jochen<br />Bernard</h1>
-          <nav class="icon-navigation">
-            <ul>
+          <nav>
+            <ul class="icon-nav">
               <li>
                 <a
                   class="github"
@@ -131,10 +131,9 @@
             laboriosam alias dicta soluta nam unde libero ut voluptates, ea
             accusantium.
           </p>
-        </section>
-        <section>
-          <h2>Skills</h2>
-          <ul class="icon-list">
+        </div>
+        <div>
+          <ul class="skills">
             <li class="swift">
               <div class="icon">
                 <img
@@ -150,7 +149,7 @@
                   alt="Swift"
                 />
               </div>
-              <p class="heading">Swift</p>
+              <p class="colored-underline">Swift</p>
             </li>
             <li class="swiftui">
               <div class="icon">
@@ -167,7 +166,7 @@
                   alt="SwiftUI"
                 />
               </div>
-              <p class="heading">SwiftUI</p>
+              <p class="colored-underline">SwiftUI</p>
             </li>
             <li class="react">
               <div class="icon">
@@ -184,7 +183,7 @@
                   alt="React"
                 />
               </div>
-              <p class="heading">React</p>
+              <p class="colored-underline">React</p>
             </li>
             <li class="typescript">
               <div class="icon">
@@ -201,12 +200,12 @@
                   alt="TypeScript"
                 />
               </div>
-              <p class="heading">TypeScript</p>
+              <p class="colored-underline">TypeScript</p>
             </li>
           </ul>
-        </section>
+        </div>
       </section>
-      <nav id="down-navigation">
+      <nav id="down-nav">
         <a href="#experience">
           <img
             width="48"
@@ -222,28 +221,26 @@
         </a>
       </nav>
     </header>
-    <main>
-      <section id="experience">
-        <h2>Experience</h2>
-        <ul class="icon-list icon-list-content icon-list-main">
-          <li>
-            <div class="icon">
-              <img
-                src="img/devizer/devizer-64w.png"
-                srcset="
-                  img/devizer/devizer-64w.png   64w,
-                  img/devizer/devizer-128w.png 128w,
-                  img/devizer/devizer-192w.png 192w,
-                  img/devizer/devizer-56w.png   56w,
-                  img/devizer/devizer-112w.png 112w,
-                  img/devizer/devizer-168w.png 168w
-                "
-                alt="Devizer"
-              />
-            </div>
-            <div>
-              <div class="heading-wrapper">
-                <h3>Devizer</h3>
+    <div id="main-footer">
+      <main>
+        <section id="experience">
+          <h2>Experience</h2>
+          <ul class="experience">
+            <li class="devizer">
+              <div>
+                <img
+                  src="img/devizer/devizer-64w.png"
+                  srcset="
+                    img/devizer/devizer-64w.png   64w,
+                    img/devizer/devizer-128w.png 128w,
+                    img/devizer/devizer-192w.png 192w,
+                    img/devizer/devizer-56w.png   56w,
+                    img/devizer/devizer-112w.png 112w,
+                    img/devizer/devizer-168w.png 168w
+                  "
+                  alt="Devizer"
+                />
+                <h3 class="colored-underline">Devizer</h3>
               </div>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
@@ -251,26 +248,22 @@
                 veniam optio modi? Rerum dicta voluptatum ducimus aspernatur
                 minima quibusdam autem vero?
               </p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <img
-                src="img/versasense/versasense-64w.png"
-                srcset="
-                  img/versasense/versasense-64w.png   64w,
-                  img/versasense/versasense-128w.png 128w,
-                  img/versasense/versasense-192w.png 192w,
-                  img/versasense/versasense-56w.png   56w,
-                  img/versasense/versasense-112w.png 112w,
-                  img/versasense/versasense-168w.png 168w
-                "
-                alt="Versasense"
-              />
-            </div>
-            <div>
-              <div class="heading-wrapper">
-                <h3>Versasense</h3>
+            </li>
+            <li class="versasense">
+              <div>
+                <img
+                  src="img/versasense/versasense-64w.png"
+                  srcset="
+                    img/versasense/versasense-64w.png   64w,
+                    img/versasense/versasense-128w.png 128w,
+                    img/versasense/versasense-192w.png 192w,
+                    img/versasense/versasense-56w.png   56w,
+                    img/versasense/versasense-112w.png 112w,
+                    img/versasense/versasense-168w.png 168w
+                  "
+                  alt="Versasense"
+                />
+                <h3 class="colored-underline">Versasense</h3>
               </div>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
@@ -278,26 +271,22 @@
                 veniam optio modi? Rerum dicta voluptatum ducimus aspernatur
                 minima quibusdam autem vero?
               </p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <img
-                src="img/quivr/quivr-64w.png"
-                srcset="
-                  img/quivr/quivr-64w.png   64w,
-                  img/quivr/quivr-128w.png 128w,
-                  img/quivr/quivr-192w.png 192w,
-                  img/quivr/quivr-56w.png   56w,
-                  img/quivr/quivr-112w.png 112w,
-                  img/quivr/quivr-168w.png 168w
-                "
-                alt="Quivr"
-              />
-            </div>
-            <div>
-              <div class="heading-wrapper">
-                <h3>Quivr</h3>
+            </li>
+            <li class="quivr">
+              <div>
+                <img
+                  src="img/quivr/quivr-64w.png"
+                  srcset="
+                    img/quivr/quivr-64w.png   64w,
+                    img/quivr/quivr-128w.png 128w,
+                    img/quivr/quivr-192w.png 192w,
+                    img/quivr/quivr-56w.png   56w,
+                    img/quivr/quivr-112w.png 112w,
+                    img/quivr/quivr-168w.png 168w
+                  "
+                  alt="Quivr"
+                />
+                <h3 class="colored-underline">Quivr</h3>
               </div>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
@@ -305,14 +294,14 @@
                 veniam optio modi? Rerum dicta voluptatum ducimus aspernatur
                 minima quibusdam autem vero?
               </p>
-            </div>
-          </li>
-        </ul>
-      </section>
-    </main>
-    <footer>
-      <p>Copyright &copy; 2020 Jochen Bernard.<br />All rights reserved.</p>
-    </footer>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer>
+        <p>Copyright &copy; 2020 Jochen Bernard.<br />All rights reserved.</p>
+      </footer>
+    </div>
     <script src="js/index.js"></script>
   </body>
 </html>

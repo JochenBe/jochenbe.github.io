@@ -1,32 +1,26 @@
-@use "sass:math";
+@use "sass:math" as *;
 
 @use "colors" as *;
 
 @function weight($amount) {
-  @return math.pow(0.5, $amount);
+  @return pow(0.5, $amount);
 }
 
 @function lighten($color, $amount) {
-  @return mix($color, $background-color, 100% * weight($amount));
+  @return mix($color, $white, 100% * weight($amount));
 }
 
 @function darken($color, $amount) {
-  @return mix($color, $foreground-color, 100% * weight($amount));
+  @return mix($color, $black, 100% * weight($amount));
 }
 
 @function shadow($blur, $color) {
-  $offset: math.div($blur, 4);
-  @return 0 $offset $blur $color,
-    0 $offset $blur rgba($foreground-color, weight(4));
+  $offset: div($blur, 4);
+  @return 0 $offset $blur $color, 0 $offset $blur rgba($black, weight(4));
 }
 
 @function inset-shadow($blur) {
-  $offset: math.div($blur, 2);
-  @return inset 0 - $offset $offset $blur rgba($background-color, weight(3)),
-    inset $offset 0 - $offset $blur rgba($foreground-color, weight(5));
-}
-
-@function icon-shadow($size, $color) {
-  @return inset-shadow(math.div($size, 6)),
-    shadow(math.div($size, 2), rgba($color, weight(2)));
+  $offset: div($blur, 2);
+  @return inset 0 - $offset $offset $blur rgba($white, weight(3)),
+    inset $offset 0 - $offset $blur rgba($black, weight(5));
 }

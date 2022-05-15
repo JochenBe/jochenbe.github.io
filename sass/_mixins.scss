@@ -1,0 +1,33 @@
+@use "sass:math" as *;
+
+@use "functions" as *;
+@use "variables" as *;
+
+@mixin margin-horizontal($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin margin-vertical($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin heading-shadow($color) {
+  text-shadow: shadow(1em, rgba($color, weight(5)));
+}
+
+@mixin colored-underline($color) {
+  .colored-underline::after {
+    background-color: $color;
+    box-shadow: shadow(
+      $colored-underline-height,
+      rgba($color, div($colored-underline-opacity, 2))
+    );
+  }
+}
+
+@mixin icon-shadow($size, $color) {
+  box-shadow: inset-shadow(div($size, 4)),
+    shadow($size, rgba($color, weight(3)));
+}

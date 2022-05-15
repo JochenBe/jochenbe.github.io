@@ -1,13 +1,13 @@
 let header = document.getElementById("header");
-let downNavigation = document.getElementById("down-navigation");
+let downNav = document.getElementById("down-nav");
 
-const setDownNavigationDisplayStyle = () => {
+const setDownNavDisplayStyle = () => {
   if (header.offsetHeight > window.innerHeight) {
-    downNavigation.style.display = "none";
+    downNav.style.display = "none";
   } else {
-    downNavigation.style.display = "block";
+    downNav.style.display = "block";
   }
 };
 
-window.onresize = setDownNavigationDisplayStyle;
-setDownNavigationDisplayStyle();
+window.onresize = setDownNavDisplayStyle;
+setDownNavDisplayStyle();
