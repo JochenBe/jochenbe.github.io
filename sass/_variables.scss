@@ -4,6 +4,7 @@
 @use "functions" as *;
 
 $padding: 2em;
+$max-width: 896px;
 $background-color: $white;
 $foreground-color: $black;
 $font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -36,12 +37,14 @@ $icon-nav-icon-size: 40px;
 $icon-nav-margin-vertical: 2em;
 $icon-nav-gap: div($icon-nav-icon-size, 2);
 
+$skills-max-width: 384px;
 $skills-icon-size: 48px 32px;
 $skills-icon-margin: 1em;
 $skills-padding: 2em;
 $skills-gap: 1em;
 $skills-font-size: 1.5rem;
 
+$experience-max-width: 768px;
 $experience-gap: 2em;
 $experience-icon-size: 48px;
 $experience-icon-margin: 1em;
