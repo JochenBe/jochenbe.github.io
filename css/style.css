@@ -114,14 +114,14 @@ p {
 .skills li:nth-child(odd) {
   flex-direction: row;
 }
-.skills li:nth-child(odd) .icon {
-  margin-right: 1em;
+.skills li:nth-child(odd) p {
+  margin-left: 0.75em;
 }
 .skills li:nth-child(even) {
   flex-direction: row-reverse;
 }
-.skills li:nth-child(even) .icon {
-  margin-left: 1em;
+.skills li:nth-child(even) p {
+  margin-right: 0.75em;
 }
 .skills li.swift .colored-underline::after {
   background-color: #f05137;

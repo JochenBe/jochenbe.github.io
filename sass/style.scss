@@ -138,16 +138,16 @@ p {
     &:nth-child(odd) {
       flex-direction: row;
 
-      .icon {
-        margin-right: $skills-icon-margin;
+      p {
+        margin-left: $skills-icon-margin;
       }
     }
 
     &:nth-child(even) {
       flex-direction: row-reverse;
 
-      .icon {
-        margin-left: $skills-icon-margin;
+      p {
+        margin-right: $skills-icon-margin;
       }
     }
 
