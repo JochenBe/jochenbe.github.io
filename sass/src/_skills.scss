@@ -44,7 +44,7 @@ $large-icon-size: 64px 40px;
     }
 
     @mixin color($color) {
-      .icon {
+      div {
         @include icon-shadow(nth($icon-size, 1), $color);
 
         background-color: $color;
@@ -76,7 +76,7 @@ $large-icon-size: 64px 40px;
     margin-top: $gap;
   }
 
-  .icon {
+  div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +104,7 @@ $large-icon-size: 64px 40px;
       margin-top: $large-gap;
     }
 
-    .icon {
+    div {
       $size: nth($large-icon-size, 1);
       width: $size;
       height: $size;

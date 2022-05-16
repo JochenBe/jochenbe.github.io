@@ -227,7 +227,7 @@ p {
 .skills li:nth-child(even) p {
   margin-right: 0.75em;
 }
-.skills li.swift .icon {
+.skills li.swift div {
   box-shadow: inset -6px 6px 12px rgba(249, 250, 254, 0.125), inset 6px -6px 12px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(240, 81, 55, 0.125), 0 12px 48px rgba(2, 3, 7, 0.0625);
   background-color: #f05137;
 }
@@ -235,7 +235,7 @@ p {
   background-color: #f05137;
   box-shadow: 0 0.0625em 0.25em rgba(240, 81, 55, 0.125), 0 0.0625em 0.25em rgba(2, 3, 7, 0.0625);
 }
-.skills li.swiftui .icon {
+.skills li.swiftui div {
   box-shadow: inset -6px 6px 12px rgba(249, 250, 254, 0.125), inset 6px -6px 12px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(72, 108, 223, 0.125), 0 12px 48px rgba(2, 3, 7, 0.0625);
   background-color: #486cdf;
 }
@@ -243,7 +243,7 @@ p {
   background-color: #486cdf;
   box-shadow: 0 0.0625em 0.25em rgba(72, 108, 223, 0.125), 0 0.0625em 0.25em rgba(2, 3, 7, 0.0625);
 }
-.skills li.react .icon {
+.skills li.react div {
   box-shadow: inset -6px 6px 12px rgba(249, 250, 254, 0.125), inset 6px -6px 12px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(0, 122, 214, 0.125), 0 12px 48px rgba(2, 3, 7, 0.0625);
   background-color: #007ad6;
 }
@@ -251,7 +251,7 @@ p {
   background-color: #007ad6;
   box-shadow: 0 0.0625em 0.25em rgba(0, 122, 214, 0.125), 0 0.0625em 0.25em rgba(2, 3, 7, 0.0625);
 }
-.skills li.typescript .icon {
+.skills li.typescript div {
   box-shadow: inset -6px 6px 12px rgba(249, 250, 254, 0.125), inset 6px -6px 12px rgba(2, 3, 7, 0.03125), 0 12px 48px rgba(2, 123, 167, 0.125), 0 12px 48px rgba(2, 3, 7, 0.0625);
   background-color: #027ba7;
 }
@@ -262,7 +262,7 @@ p {
 .skills li + li {
   margin-top: 1em;
 }
-.skills .icon {
+.skills div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -284,7 +284,7 @@ p {
   .skills li + li {
     margin-top: 2em;
   }
-  .skills .icon {
+  .skills div {
     width: 64px;
     height: 64px;
   }
