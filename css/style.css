@@ -48,9 +48,28 @@ p {
   margin-bottom: 1em;
 }
 
+@keyframes down-nav-focus {
+  to {
+    transform: translateY(50%);
+  }
+}
 #down-nav {
   margin-left: auto;
   margin-right: auto;
+  transition: opacity 0.125s ease;
+}
+#down-nav:hover {
+  opacity: 0.875;
+}
+#down-nav:active {
+  opacity: 0.75;
+}
+#down-nav a {
+  display: inline-block;
+}
+#down-nav a:focus {
+  outline: none;
+  animation: down-nav-focus 0.5s ease-in-out alternate infinite;
 }
 
 .colored-underline {
@@ -84,22 +103,53 @@ p {
   margin-left: 20px;
 }
 .icon-nav a {
+  position: relative;
   display: inline-block;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
+  transition: opacity 0.125s ease;
+}
+.icon-nav a:hover {
+  opacity: 0.875;
+}
+.icon-nav a:active {
+  opacity: 0.75;
+}
+.icon-nav a:focus {
+  outline: none;
+}
+.icon-nav a:focus::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: -4px;
+  bottom: -4px;
+  border: solid 4px #020307;
   border-radius: 50%;
 }
 .icon-nav a.github {
   box-shadow: inset -5px 5px 10px rgba(249, 250, 254, 0.125), inset 5px -5px 10px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(0, 122, 214, 0.125), 0 10px 40px rgba(2, 3, 7, 0.0625);
   background-color: #007ad6;
 }
+.icon-nav a.github:focus::after {
+  border-color: rgba(0, 122, 214, 0.5);
+}
 .icon-nav a.linkedin {
   box-shadow: inset -5px 5px 10px rgba(249, 250, 254, 0.125), inset 5px -5px 10px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(72, 108, 223, 0.125), 0 10px 40px rgba(2, 3, 7, 0.0625);
   background-color: #486cdf;
 }
+.icon-nav a.linkedin:focus::after {
+  border-color: rgba(72, 108, 223, 0.5);
+}
 .icon-nav a.mail {
   box-shadow: inset -5px 5px 10px rgba(249, 250, 254, 0.125), inset 5px -5px 10px rgba(2, 3, 7, 0.03125), 0 10px 40px rgba(238, 52, 127, 0.125), 0 10px 40px rgba(2, 3, 7, 0.0625);
   background-color: #ee347f;
+}
+.icon-nav a.mail:focus::after {
+  border-color: rgba(238, 52, 127, 0.5);
 }
 
 .skills {

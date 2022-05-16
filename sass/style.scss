@@ -58,8 +58,33 @@ p {
   @include margin-vertical($jochenbernard-margin-vertical);
 }
 
+@keyframes down-nav-focus {
+  to {
+    transform: translateY(50%);
+  }
+}
+
 #down-nav {
   @include margin-horizontal(auto);
+
+  transition: opacity $hover-transition-duration ease;
+
+  &:hover {
+    opacity: $hover-opacity;
+  }
+
+  &:active {
+    opacity: $active-opacity;
+  }
+
+  a {
+    display: inline-block;
+  }
+
+  a:focus {
+    outline: none;
+    animation: down-nav-focus 0.5s ease-in-out alternate infinite;
+  }
 }
 
 .colored-underline {
@@ -100,16 +125,47 @@ p {
   }
 
   a {
+    position: relative;
     display: inline-block;
 
     width: $icon-nav-icon-size;
     height: $icon-nav-icon-size;
     border-radius: 50%;
 
+    transition: opacity $hover-transition-duration ease;
+
+    &:hover {
+      opacity: $hover-opacity;
+    }
+
+    &:active {
+      opacity: $active-opacity;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: -$focus-border-width;
+        right: -$focus-border-width;
+        top: -$focus-border-width;
+        bottom: -$focus-border-width;
+        border: solid $focus-border-width $foreground-color;
+        border-radius: 50%;
+      }
+    }
+
     @mixin color($color) {
       @include icon-shadow($icon-nav-icon-size, $color);
 
       background-color: $color;
+
+      &:focus::after {
+        border-color: rgba($color, $focus-border-alpha);
+      }
     }
 
     &.github {

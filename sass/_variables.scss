@@ -3,6 +3,12 @@
 @use "colors" as *;
 @use "functions" as *;
 
+$hover-transition-duration: 1s * weight(3);
+$hover-opacity: 0.875;
+$active-opacity: 0.75;
+$focus-border-width: 4px;
+$focus-border-alpha: weight(1);
+
 $breakpoint: 64rem;
 
 $padding: 2em;
