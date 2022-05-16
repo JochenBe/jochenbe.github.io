@@ -362,6 +362,7 @@ p {
 #down-nav {
   margin-left: auto;
   margin-right: auto;
+  line-height: 0;
   transition: opacity 0.125s ease;
 }
 #down-nav:hover {

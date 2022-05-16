@@ -12,6 +12,8 @@ $focus-transition-duration: 0.5s;
 #down-nav {
   @include margin-horizontal(auto);
 
+  line-height: 0;
+
   transition: opacity $transition-duration ease;
 
   &:hover {
