@@ -76,8 +76,8 @@ p {
 .icon-nav {
   display: flex;
   flex-direction: row;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 3em;
+  margin-bottom: 3em;
   line-height: 0;
 }
 .icon-nav li + li {
