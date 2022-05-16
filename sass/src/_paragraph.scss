@@ -1,0 +1,13 @@
+@use "../functions" as *;
+
+@use "html-body";
+
+$max-width: 48ch;
+$color: lighten(html-body.$color, 1);
+
+p {
+  max-width: $max-width;
+
+  color: $color;
+  text-align: justify;
+}

@@ -1,28 +1,28 @@
-@use "sass:math";
+@use "sass:math" as *;
 
+$yellow: #ffc55f;
 $orange: #f05137;
 $pink: #ee347f;
 $purple: #bc4dbc;
 $indigo: #486cdf;
 $blue: #007ad6;
 $teal: #027ba7;
-$yellow: #ffc55f;
 
-$primary-color: $indigo;
+$primary: $indigo;
 
-$color-weight: math.div(100%, 32);
-$white: mix($primary-color, white, $color-weight);
-$black: mix($primary-color, black, $color-weight);
+$weight: div(100%, 32);
+$white: mix($primary, white, $weight);
+$black: mix($primary, black, $weight);
 
-$github-color: $blue;
-$linkedin-color: $indigo;
-$mail-color: $pink;
+$github: $blue;
+$linkedin: $indigo;
+$mail: $pink;
 
-$swift-color: $orange;
-$swiftui-color: $indigo;
-$react-color: $blue;
-$typescript-color: $teal;
+$swift: $orange;
+$swiftui: $indigo;
+$react: $blue;
+$typescript: $teal;
 
-$devizer-color: $blue;
-$versasense-color: $orange;
-$quivr-color: $yellow;
+$devizer: $blue;
+$versasense: $orange;
+$quivr: $yellow;

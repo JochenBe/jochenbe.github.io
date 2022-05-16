@@ -1,0 +1,87 @@
+@use "../colors" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+@use "colored-underline";
+
+$gap: 2em;
+$max-width: 48rem;
+$heading-margin-bottom: 0.5em;
+
+$icon-size: 48px;
+$icon-margin: 1em;
+
+$large-gap: 4em;
+$large-heading-margin-bottom: 1em;
+
+.experience {
+  @include margin-horizontal(auto);
+  max-width: $max-width;
+
+  li {
+    margin-top: $gap;
+
+    &:nth-child(odd) {
+      div {
+        flex-direction: row;
+      }
+
+      img {
+        margin-right: $icon-margin;
+      }
+
+      p {
+        margin-right: auto;
+      }
+    }
+
+    &:nth-child(even) {
+      div {
+        flex-direction: row-reverse;
+      }
+
+      img {
+        margin-left: $icon-margin;
+      }
+
+      p {
+        margin-left: auto;
+      }
+    }
+
+    &.devizer .colored-underline {
+      @include colored-underline.color($devizer);
+    }
+
+    &.versasense .colored-underline {
+      @include colored-underline.color($versasense);
+    }
+
+    &.quivr .colored-underline {
+      @include colored-underline.color($quivr);
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: $heading-margin-bottom;
+  }
+
+  img {
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    li {
+      margin-top: $large-gap;
+    }
+
+    div {
+      margin-bottom: $large-heading-margin-bottom;
+    }
+  }
+}

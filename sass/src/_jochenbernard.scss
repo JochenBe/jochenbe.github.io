@@ -1,0 +1,7 @@
+@use "../mixins" as *;
+
+$margin-vertical: 1em;
+
+#jochenbernard {
+  @include margin-vertical($margin-vertical);
+}

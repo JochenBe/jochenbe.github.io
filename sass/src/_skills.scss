@@ -1,0 +1,123 @@
+@use "../colors" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+@use "colored-underline";
+
+$max-width: 24rem;
+$padding: 2em;
+$gap: 1em;
+$font-size: 1.5rem;
+
+$icon-size: 48px 32px;
+$icon-margin: 0.75em;
+
+$large-max-width: 32rem;
+$large-gap: 2em;
+$large-font-size: 2rem;
+
+$large-icon-size: 64px 40px;
+
+.skills {
+  padding: $padding;
+  max-width: $max-width;
+  width: 100%;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    &:nth-child(odd) {
+      flex-direction: row;
+
+      p {
+        margin-left: $icon-margin;
+      }
+    }
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+
+      p {
+        margin-right: $icon-margin;
+      }
+    }
+
+    @mixin color($color) {
+      .icon {
+        @include icon-shadow(nth($icon-size, 1), $color);
+
+        background-color: $color;
+      }
+
+      .colored-underline {
+        @include colored-underline.color($color);
+      }
+    }
+
+    &.swift {
+      @include color($swift);
+    }
+
+    &.swiftui {
+      @include color($swiftui);
+    }
+
+    &.react {
+      @include color($react);
+    }
+
+    &.typescript {
+      @include color($typescript);
+    }
+  }
+
+  li + li {
+    margin-top: $gap;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    $size: nth($icon-size, 1);
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+  }
+
+  img {
+    $size: nth($icon-size, 2);
+    width: $size;
+    height: $size;
+  }
+
+  p {
+    font-size: $font-size;
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    max-width: $large-max-width;
+
+    li + li {
+      margin-top: $large-gap;
+    }
+
+    .icon {
+      $size: nth($large-icon-size, 1);
+      width: $size;
+      height: $size;
+    }
+
+    img {
+      $size: nth($large-icon-size, 2);
+      width: $size;
+      height: $size;
+    }
+
+    p {
+      font-size: $large-font-size;
+    }
+  }
+}

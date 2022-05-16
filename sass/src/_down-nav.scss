@@ -1,0 +1,34 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+$focus-transition-duration: 0.5s;
+
+@keyframes down-nav-focus {
+  to {
+    transform: translateY(50%);
+  }
+}
+
+#down-nav {
+  @include margin-horizontal(auto);
+
+  transition: opacity $transition-duration ease;
+
+  &:hover {
+    opacity: $hover-opacity;
+  }
+
+  &:active {
+    opacity: $active-opacity;
+  }
+
+  a {
+    display: inline-block;
+
+    &:focus {
+      outline: none;
+      animation: down-nav-focus $focus-transition-duration ease-in-out alternate
+        infinite;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@use "sass:math" as *;
+
+@use "../colors" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+@use "html-body";
+
+$icon-size: 40px;
+
+$margin-vertical: 3em;
+$gap: div($icon-size, 2);
+
+.icon-nav {
+  display: flex;
+  flex-direction: row;
+
+  @include margin-vertical($margin-vertical);
+
+  line-height: 0;
+
+  li + li {
+    margin-left: $gap;
+  }
+
+  a {
+    position: relative;
+    display: inline-block;
+
+    width: $icon-size;
+    height: $icon-size;
+    border-radius: 50%;
+
+    transition: opacity $transition-duration ease;
+
+    &:hover {
+      opacity: $hover-opacity;
+    }
+
+    &:active {
+      opacity: $active-opacity;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 0 - $focus-border-width;
+        right: 0 - $focus-border-width;
+        top: 0 - $focus-border-width;
+        bottom: 0 - $focus-border-width;
+        border: solid $focus-border-width html-body.$color;
+        border-radius: 50%;
+      }
+    }
+
+    @mixin color($color) {
+      @include icon-shadow($icon-size, $color);
+
+      background-color: $color;
+
+      &:focus::after {
+        border-color: rgba($color, $focus-border-alpha);
+      }
+    }
+
+    &.github {
+      @include color($github);
+    }
+
+    &.linkedin {
+      @include color($linkedin);
+    }
+
+    &.mail {
+      @include color($mail);
+    }
+  }
+}

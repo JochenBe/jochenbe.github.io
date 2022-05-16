@@ -1,0 +1,47 @@
+@use "sass:math" as *;
+
+@use "../functions" as *;
+
+@use "html-body";
+@use "headings";
+
+$color: html-body.$color;
+$font-weight: headings.$font-weight;
+$line-height: headings.$line-height;
+
+$height: 0.25em;
+$border-radius: div($height, 4);
+$box-shadow-alpha: weight(3);
+$opacity: weight(2);
+
+@mixin color($color) {
+  &::after {
+    background-color: $color;
+    box-shadow: shadow($height, rgba($color, $box-shadow-alpha));
+  }
+}
+
+.colored-underline {
+  position: relative;
+
+  color: $color;
+  font-weight: $font-weight;
+  line-height: $line-height;
+
+  z-index: 1;
+
+  &::after {
+    content: "";
+    display: inline-block;
+
+    position: absolute;
+    bottom: 0;
+    left: -$height;
+    right: -$height;
+    height: $height;
+    border-radius: $border-radius;
+
+    opacity: $opacity;
+    z-index: -1;
+  }
+}

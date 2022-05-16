@@ -1,0 +1,95 @@
+@use "../variables" as *;
+@use "../functions" as *;
+@use "../mixins" as *;
+
+@use "html-body";
+
+$max-width: 72rem;
+
+$padding: 2em;
+$large-padding: 3em;
+
+$header-gap: 1em;
+
+$main-background-color: lighten(html-body.$color, 5);
+
+$footer-background-color: lighten(html-body.$color, 4);
+
+header,
+main,
+footer {
+  padding: $padding;
+}
+
+header,
+main {
+  & > section {
+    @include margin-horizontal(auto);
+    max-width: $max-width;
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    padding: $large-padding;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+
+  & > section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & + div {
+        margin-top: $header-gap;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint) {
+      flex-direction: row;
+
+      & > div {
+        flex-grow: 1;
+
+        & + div {
+          margin-top: 0;
+          margin-left: $header-gap;
+        }
+      }
+    }
+  }
+}
+
+#main-footer {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+
+  background-color: $main-background-color;
+}
+
+footer {
+  background-color: $footer-background-color;
+
+  p {
+    @include margin-horizontal(auto);
+
+    text-align: center;
+  }
+}
